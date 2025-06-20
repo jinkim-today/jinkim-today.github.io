@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-// Static build configuration for deployment
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -19,10 +18,10 @@ export default defineConfig({
       input: "./client/index.html",
     },
   },
-  base: "./",
+  base: "/blog/", // ✅ GitHub Pages requires this
   server: {
     port: 5000,
-    host: true, // listen on 0.0.0.0 + localhost
+    host: true,
     allowedHosts: true,
   },
 });
