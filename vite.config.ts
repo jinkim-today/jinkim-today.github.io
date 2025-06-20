@@ -14,7 +14,7 @@ export default defineConfig({
     outDir: "../dist",
     emptyOutDir: true,
   },
-  base: "/blog/", // Required for GitHub Pages
+  base: "", // Required for GitHub Pages
   server: {
     port: 3000,
   },
