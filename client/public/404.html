@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    var pathSegmentsToKeep = 1; // Keeps /blog/ in the path
+
+    var l = window.location;
+    var segments = l.pathname.split('/').filter(function(s) { return s.length > 0; });
+    var repoName = segments.shift(); // This is 'blog'
+    var remainingPath = segments.length > 0 ? '/' + segments.join('/') : '';
+    
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      '/' + repoName + '/?p=/' +
+      remainingPath +
+      l.search +
+      (l.hash || '')
+    );
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+</body>
+</html>

@@ -7,21 +7,15 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client/src"),
-      "@shared": path.resolve(__dirname, "./shared"),
     },
   },
   root: "./client",
   build: {
     outDir: "../dist",
     emptyOutDir: true,
-    rollupOptions: {
-      input: "./client/index.html",
-    },
   },
-  base: "/blog/", // ✅ GitHub Pages requires this
+  base: "/blog/", // Required for GitHub Pages
   server: {
-    port: 5000,
-    host: true,
-    allowedHosts: true,
+    port: 3000,
   },
 });
