@@ -12,7 +12,7 @@ const resources = {
         blog: 'Blog'
       },
       home: {
-        title: 'Welcome to My Tech Blog',
+        title: 'In progress',
         subtitle: 'Exploring modern web development, software engineering, and technology trends'
       },
       blog: {
@@ -37,7 +37,7 @@ const resources = {
         expertise: 'Expertise',
         contact: 'Contact',
         hero: {
-          title: 'John Developer',
+          title: 'Jin Kim',
           subtitle: 'Passionate full-stack developer with over 8 years of experience building scalable web applications. I specialize in modern JavaScript technologies and have a strong background in system architecture and performance optimization.',
           getInTouch: 'Get in Touch',
           downloadResume: 'Download Resume'
@@ -108,8 +108,8 @@ const resources = {
         blog: '블로그'
       },
       home: {
-        title: '나의 기술 블로그에 오신 것을 환영합니다',
-        subtitle: '현대적인 웹 개발, 소프트웨어 엔지니어링, 그리고 기술 트렌드를 탐구합니다'
+        title: 'In progress',
+        subtitle: ' '
       },
       blog: {
         title: '블로그 포스트',
