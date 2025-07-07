@@ -12,6 +12,7 @@ export interface BlogPost {
   readTime: number;
   views?: number;
   tags?: string[];
+  author?: string;
 }
 
 export interface BlogPostMetadata {

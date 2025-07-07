@@ -29,8 +29,12 @@ export default function PortfolioDetail() {
   const { data: project, isLoading, error } = useQuery<PortfolioProjectDetail>({
     queryKey: [`/portfolio/${params.slug}`, i18n.language],
     queryFn: async () => {
-      const { staticDataService } = await import('@/lib/staticData');
-      return staticDataService.getPortfolioProjectByLanguage(params.slug!, i18n.language);
+      const { dynamicPortfolioService } = await import('@/lib/dynamicPortfolioService');
+      const result = await dynamicPortfolioService.getPortfolioProjectByLanguage(params.slug!, i18n.language);
+      if (!result) {
+        throw new Error('Portfolio project not found');
+      }
+      return result;
     },
     enabled: !!params.slug,
   });

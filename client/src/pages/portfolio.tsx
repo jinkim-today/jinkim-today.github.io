@@ -25,8 +25,8 @@ export default function Portfolio() {
   const { data: projects = [], isLoading } = useQuery<PortfolioProject[]>({
     queryKey: ['/portfolio', i18n.language],
     queryFn: async () => {
-      const { staticDataService } = await import('@/lib/staticData');
-      return staticDataService.getAllPortfolioProjects();
+      const { dynamicPortfolioService } = await import('@/lib/dynamicPortfolioService');
+      return dynamicPortfolioService.getAllPortfolioProjects();
     },
   });
 

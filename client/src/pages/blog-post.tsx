@@ -16,8 +16,8 @@ export default function BlogPostPage() {
   const { data: post, isLoading, error } = useQuery<BlogPost>({
     queryKey: [`/blog/${params.language}/${params.slug}`],
     queryFn: async () => {
-      const { staticDataService } = await import('@/lib/staticData');
-      return staticDataService.getBlogPost(params.slug!, params.language!, '');
+      const { dynamicBlogService } = await import('@/lib/dynamicBlogService');
+      return dynamicBlogService.getBlogPost(params.slug!, params.language!);
     },
     enabled: !!params.language && !!params.slug,
   });

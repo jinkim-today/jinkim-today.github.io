@@ -16,8 +16,17 @@ export default function BlogList() {
   const { data: posts = [], isLoading } = useQuery<BlogPost[]>({
     queryKey: ['/blog', i18n.language],
     queryFn: async () => {
-      const { staticDataService } = await import('@/lib/staticData');
-      return staticDataService.getAllBlogPosts();
+      const { dynamicBlogService } = await import('@/lib/dynamicBlogService');
+      return dynamicBlogService.getAllBlogPosts();
+    },
+  });
+
+  // Load dynamic categories from blog service
+  const { data: dynamicCategories = [] } = useQuery<string[]>({
+    queryKey: ['/blog/categories'],
+    queryFn: async () => {
+      const { dynamicBlogService } = await import('@/lib/dynamicBlogService');
+      return dynamicBlogService.getAllCategories();
     },
   });
 
@@ -55,12 +64,13 @@ export default function BlogList() {
     return grouped;
   }, [filteredPosts]);
 
+  // Build dynamic categories for dropdown
   const categories = [
     { value: 'all', label: t('category.all') },
-    { value: 'engineering', label: t('category.engineering') },
-    { value: 'frontend', label: t('category.frontend') },
-    { value: 'backend', label: t('category.backend') },
-    { value: 'devops', label: t('category.devops') },
+    ...dynamicCategories.map(category => ({
+      value: category,
+      label: category.charAt(0).toUpperCase() + category.slice(1) // Capitalize first letter
+    }))
   ];
 
   if (isLoading) {
