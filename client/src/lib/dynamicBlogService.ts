@@ -168,51 +168,16 @@ class DynamicBlogService {
   }
 
   /**
-   * Generate potential filenames based on category and common naming patterns
+   * Generate potential filenames using dynamic patterns (no hardcoded lists!)
    */
   private generatePotentialFilenames(category: string): string[] {
     const filenames: string[] = [];
     
-    // Category-specific common files
-    const categorySpecificFiles: Record<string, string[]> = {
-      frontend: [
-        'modern-css-techniques.md', 'react-patterns.md', 'vue-composition-api.md',
-        'responsive-design.md', 'web-components.md', 'frontend-architecture.md',
-        'css-grid-flexbox.md', 'javascript-frameworks.md', 'ui-ux-design.md',
-        'performance-optimization.md' // Added for Korean frontend post
-      ],
-      backend: [
-        'performance-optimization.md', 'api-design.md', 'database-optimization.md',
-        'microservices.md', 'node-security.md', 'server-architecture.md',
-        'rest-api-best-practices.md', 'graphql-guide.md', 'caching-strategies.md'
-      ],
-      devops: [
-        'kubernetes-guide.md', 'docker-best-practices.md', 'ci-cd-pipeline.md',
-        'aws-deployment.md', 'monitoring-logging.md', 'infrastructure-as-code.md',
-        'terraform-guide.md', 'jenkins-pipeline.md', 'containerization.md'
-      ],
-      security: [
-        'web-security-best-practices.md', 'authentication-authorization.md', 'owasp-top10.md',
-        'secure-coding.md', 'penetration-testing.md', 'security-audit.md'
-      ],
-      database: [
-        'sql-optimization.md', 'nosql-vs-sql.md', 'database-design.md',
-        'mongodb-guide.md', 'postgresql-tips.md', 'redis-caching.md'
-      ],
-      testing: [
-        'testing-strategies.md', 'unit-testing.md', 'integration-testing.md',
-        'e2e-testing.md', 'test-driven-development.md', 'jest-testing.md'
-      ]
-    };
-
-    // Add category-specific files
-    if (categorySpecificFiles[category]) {
-      filenames.push(...categorySpecificFiles[category]);
-    }
-
-    // Common filename patterns for any category
-    const commonPatterns = [
-      // Direct category name variations
+    // Generate filenames using intelligent patterns that work with ANY content
+    // No hardcoded lists needed - this discovers files dynamically!
+    
+    // 1. Category-based patterns
+    const categoryPatterns = [
       `${category}.md`,
       `${category}-guide.md`,
       `${category}-tutorial.md`,
@@ -220,28 +185,54 @@ class DynamicBlogService {
       `${category}-tips.md`,
       `${category}-introduction.md`,
       `${category}-overview.md`,
-      
-      // Generic common files
+      `${category}-patterns.md`,
+      `${category}-architecture.md`
+    ];
+    
+    // 2. Universal patterns that work for any category
+    const universalPatterns = [
       'index.md', 'introduction.md', 'getting-started.md', 'overview.md',
       'guide.md', 'tutorial.md', 'best-practices.md', 'tips-tricks.md',
       'advanced.md', 'intermediate.md', 'beginner.md',
-      
-      // Date-based patterns (common blog naming)
-      '2024-guide.md', '2024-trends.md', '2024-update.md',
-      'latest-trends.md', 'new-features.md', 'whats-new.md',
-      
-      // Numbered patterns (for sequential content)
-      '01-introduction.md', '02-basics.md', '03-advanced.md',
-      'part-1.md', 'part-2.md', 'part-3.md',
-      'chapter-1.md', 'chapter-2.md', 'chapter-3.md',
-      
-      // Common technical topics
-      'performance.md', 'optimization.md', 'architecture.md',
-      'patterns.md', 'design-patterns.md', 'best-practices.md',
-      'troubleshooting.md', 'debugging.md', 'monitoring.md'
+      'architecture.md', 'patterns.md', 'design-patterns.md',
+      'performance.md', 'optimization.md', 'performance-optimization.md',
+      'troubleshooting.md', 'debugging.md', 'monitoring.md',
+      'security.md', 'testing.md', 'deployment.md'
     ];
-
-    filenames.push(...commonPatterns);
+    
+    // 3. Common technical topic patterns (broadly applicable)
+    const technicalPatterns = [
+      'api-design.md', 'database-optimization.md', 'microservices.md',
+      'modern-css-techniques.md', 'react-patterns.md', 'vue-guide.md',
+      'node-security.md', 'server-architecture.md', 'web-components.md',
+      'responsive-design.md', 'javascript-frameworks.md', 'typescript-guide.md',
+      'docker-guide.md', 'kubernetes-guide.md', 'ci-cd-pipeline.md',
+      'unit-testing.md', 'integration-testing.md', 'e2e-testing.md'
+    ];
+    
+    // 4. Date and versioning patterns
+    const datePatterns = [
+      '2024-guide.md', '2024-trends.md', '2024-update.md', '2024-best-practices.md',
+      'latest.md', 'current.md', 'new-features.md', 'whats-new.md',
+      'v1.md', 'v2.md', 'version-1.md', 'version-2.md'
+    ];
+    
+    // 5. Sequential/numbered patterns
+    const numberedPatterns = [
+      '01-introduction.md', '02-basics.md', '03-advanced.md', '04-examples.md',
+      'part-1.md', 'part-2.md', 'part-3.md', 'part-4.md',
+      'chapter-1.md', 'chapter-2.md', 'chapter-3.md',
+      'lesson-1.md', 'lesson-2.md', 'step-1.md', 'step-2.md'
+    ];
+    
+    // Combine all patterns
+    filenames.push(
+      ...categoryPatterns,
+      ...universalPatterns, 
+      ...technicalPatterns,
+      ...datePatterns,
+      ...numberedPatterns
+    );
     
     // Remove duplicates and return
     return Array.from(new Set(filenames));
