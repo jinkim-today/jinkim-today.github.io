@@ -8,19 +8,35 @@ export default function About() {
   const { t } = useTranslation();
 
   const skills = [
-    { name: 'React & TypeScript', level: 95, color: 'bg-blue-500' },
-    { name: 'Node.js & Express', level: 90, color: 'bg-green-500' },
-    { name: 'PostgreSQL & MongoDB', level: 85, color: 'bg-purple-500' },
-    { name: 'Docker & Kubernetes', level: 80, color: 'bg-orange-500' },
-    { name: 'AWS & Cloud Services', level: 88, color: 'bg-yellow-500' },
-    { name: 'GraphQL & REST APIs', level: 92, color: 'bg-pink-500' },
+    { name: 'TypeScript & JavaScript', level: 95, color: 'bg-blue-500' },
+    { name: 'C++ & Systems Programming', level: 90, color: 'bg-red-500' },
+    { name: 'React & Node.js', level: 92, color: 'bg-green-500' },
+    { name: 'Python & PyTorch', level: 85, color: 'bg-purple-500' },
+    { name: 'AWS & Docker', level: 88, color: 'bg-orange-500' },
+    { name: 'PostgreSQL & Database Design', level: 85, color: 'bg-indigo-500' },
   ];
 
   const achievements = [
-    { icon: Trophy, title: t('about.achievements.experience'), description: t('about.achievements.experienceDesc') },
-    { icon: Users, title: t('about.achievements.projects'), description: t('about.achievements.projectsDesc') },
-    { icon: Code, title: t('about.achievements.technologies'), description: t('about.achievements.technologiesDesc') },
-    { icon: Zap, title: t('about.achievements.performance'), description: t('about.achievements.performanceDesc') },
+    { 
+      icon: Trophy, 
+      title: t('locale') === 'ko' ? '3개 인턴십' : '3 Internships',
+      description: t('locale') === 'ko' ? 'Dialpad, Computrol, Intersystem 근무 경험' : 'Experience at Dialpad, Computrol, Intersystem'
+    },
+    { 
+      icon: Users, 
+      title: t('locale') === 'ko' ? '5+ 프로젝트' : '5+ Projects',
+      description: t('locale') === 'ko' ? 'AI/ML, 풀스택, 비즈니스 프로젝트 완료' : 'AI/ML, full-stack, and business projects completed'
+    },
+    { 
+      icon: Code, 
+      title: t('locale') === 'ko' ? '6개 기술스택' : '6 Tech Stacks',
+      description: t('locale') === 'ko' ? 'TypeScript, C++, Python, React, AWS 등' : 'TypeScript, C++, Python, React, AWS, and more'
+    },
+    { 
+      icon: Zap, 
+      title: t('locale') === 'ko' ? '90% 비용절감' : '90% Cost Reduction',
+      description: t('locale') === 'ko' ? 'AWS Lambda에서 EC2로 마이그레이션 성과' : 'Achieved by migrating from AWS Lambda to EC2'
+    },
   ];
 
   return (
@@ -39,10 +55,12 @@ export default function About() {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('about.hero.title')}
+            Jin Kim
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            {t('about.hero.subtitle')}
+            {t('about.hero.subtitle') || (t('locale') === 'ko' ? 
+              'SFU 컴퓨터과학과 학생이자 Dialpad 소프트웨어 엔지니어 인턴. 풀스택 개발, C++ 시스템 프로그래밍, AI/ML 프로젝트 경험을 보유하고 있습니다.' : 
+              'Computer Science student at SFU and Software Engineer Intern at Dialpad. Experienced in full-stack development, C++ systems programming, and AI/ML projects.')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700">

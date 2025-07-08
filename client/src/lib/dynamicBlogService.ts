@@ -168,70 +168,39 @@ class DynamicBlogService {
   }
 
   /**
-   * Generate potential filenames using dynamic patterns (no hardcoded lists!)
+   * Generate OPTIMIZED potential filenames - fewer patterns for better performance!
    */
   private generatePotentialFilenames(category: string): string[] {
     const filenames: string[] = [];
     
-    // Generate filenames using intelligent patterns that work with ANY content
-    // No hardcoded lists needed - this discovers files dynamically!
+    // OPTIMIZED: Reduced patterns for faster loading
+    // Focus on most common naming conventions only
     
-    // 1. Category-based patterns
-    const categoryPatterns = [
+    // 1. Essential category-based patterns (most likely to exist)
+    const essentialPatterns = [
       `${category}.md`,
       `${category}-guide.md`,
-      `${category}-tutorial.md`,
-      `${category}-best-practices.md`,
-      `${category}-tips.md`,
-      `${category}-introduction.md`,
-      `${category}-overview.md`,
-      `${category}-patterns.md`,
-      `${category}-architecture.md`
+      `${category}-tutorial.md`
     ];
     
-    // 2. Universal patterns that work for any category
-    const universalPatterns = [
-      'index.md', 'introduction.md', 'getting-started.md', 'overview.md',
-      'guide.md', 'tutorial.md', 'best-practices.md', 'tips-tricks.md',
-      'advanced.md', 'intermediate.md', 'beginner.md',
-      'architecture.md', 'patterns.md', 'design-patterns.md',
-      'performance.md', 'optimization.md', 'performance-optimization.md',
-      'troubleshooting.md', 'debugging.md', 'monitoring.md',
-      'security.md', 'testing.md', 'deployment.md'
+    // 2. Most common universal patterns
+    const commonPatterns = [
+      'index.md', 'introduction.md', 'overview.md', 'guide.md',
+      'performance-optimization.md', 'modern-css-techniques.md',
+      'react-patterns.md', 'best-practices.md'
     ];
     
-    // 3. Common technical topic patterns (broadly applicable)
-    const technicalPatterns = [
-      'api-design.md', 'database-optimization.md', 'microservices.md',
-      'modern-css-techniques.md', 'react-patterns.md', 'vue-guide.md',
-      'node-security.md', 'server-architecture.md', 'web-components.md',
-      'responsive-design.md', 'javascript-frameworks.md', 'typescript-guide.md',
-      'docker-guide.md', 'kubernetes-guide.md', 'ci-cd-pipeline.md',
-      'unit-testing.md', 'integration-testing.md', 'e2e-testing.md'
+    // 3. Known existing files (from current blog structure)
+    const knownFiles = [
+      'performance-optimization.md',
+      'modern-css-techniques.md'
     ];
     
-    // 4. Date and versioning patterns
-    const datePatterns = [
-      '2024-guide.md', '2024-trends.md', '2024-update.md', '2024-best-practices.md',
-      'latest.md', 'current.md', 'new-features.md', 'whats-new.md',
-      'v1.md', 'v2.md', 'version-1.md', 'version-2.md'
-    ];
-    
-    // 5. Sequential/numbered patterns
-    const numberedPatterns = [
-      '01-introduction.md', '02-basics.md', '03-advanced.md', '04-examples.md',
-      'part-1.md', 'part-2.md', 'part-3.md', 'part-4.md',
-      'chapter-1.md', 'chapter-2.md', 'chapter-3.md',
-      'lesson-1.md', 'lesson-2.md', 'step-1.md', 'step-2.md'
-    ];
-    
-    // Combine all patterns
+    // Combine patterns (much smaller list for faster performance)
     filenames.push(
-      ...categoryPatterns,
-      ...universalPatterns, 
-      ...technicalPatterns,
-      ...datePatterns,
-      ...numberedPatterns
+      ...essentialPatterns,
+      ...commonPatterns,
+      ...knownFiles
     );
     
     // Remove duplicates and return

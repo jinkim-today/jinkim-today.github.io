@@ -13,11 +13,14 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   
   const { data: posts = [], isLoading } = useQuery<BlogPost[]>({
-    queryKey: ['/blog', i18n.language],
+    queryKey: ['/blog/posts', i18n.language], // More specific cache key
     queryFn: async () => {
       const { dynamicBlogService } = await import('@/lib/dynamicBlogService');
-      return dynamicBlogService.getAllBlogPosts();
+      const allPosts = await dynamicBlogService.getAllBlogPosts();
+      // Filter by language at query level to ensure clean cache separation
+      return allPosts.filter(post => post.language === i18n.language);
     },
+    staleTime: 1000 * 60 * 5, // 5 minutes cache
   });
 
   // Load dynamic categories from blog service

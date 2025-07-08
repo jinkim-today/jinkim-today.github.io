@@ -38,7 +38,7 @@ export default function Resume() {
                   Jin Kim
                 </h1>
                 <p className="text-xl text-blue-100 mb-4">
-                  {i18n.language === 'ko' ? '컴퓨터 과학 학생 & 소프트웨어 엔지니어' : 'Computer Science Student & Software Engineer'}
+                  {i18n.language === 'ko' ? '소프트웨어 엔지니어 인턴 @ Dialpad | SFU 컴퓨터 과학과' : 'Software Engineer Intern @ Dialpad | SFU Computer Science'}
                 </p>
                 <div className="flex flex-wrap gap-4 text-sm text-blue-100 mb-6">
                   <span className="flex items-center">
