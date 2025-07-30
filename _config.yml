@@ -259,12 +259,14 @@ pagination:
 
 
 # Plugins (previously gems:)
+remote_theme: mmistakes/minimal-mistakes
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-remote-theme  
 
 # mimic GitHub Pages with --safe
 whitelist:
