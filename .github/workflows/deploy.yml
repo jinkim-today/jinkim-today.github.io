@@ -1,4 +1,4 @@
-name: Deploy Vite frontend to GitHub Pages
+name: Deploy Jekyll site to GitHub Pages
 
 on:
   push:
@@ -14,15 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          node-version: '18'
+          ruby-version: '3.2'
+          bundler-cache: true
 
       - name: Install dependencies
-        run: npm install
+        run: bundle install
 
       - name: Build site
-        run: npm run build
+        run: bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
