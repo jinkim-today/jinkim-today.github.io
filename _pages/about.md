@@ -86,7 +86,7 @@ May 2022 - Present
 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
 
 - Email: [jinkim.today@gmail.com](mailto:jinkim.today@gmail.com)
-- LinkedIn: [linkedin.com/in/jnkjnkim](https://linkedin.com/in/jnkjnkim)
+- LinkedIn: [linkedin.com/in/kukjinkim](https://linkedin.com/in/kukjinkim)
 - GitHub: [github.com/jinkim-today](https://github.com/jinkim-today)
 - Resume: [Download PDF Resume](/assets/files/JinKim_resume.pdf)
 
