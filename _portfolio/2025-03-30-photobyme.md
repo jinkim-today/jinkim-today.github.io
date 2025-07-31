@@ -8,7 +8,7 @@ sidebar:
   - title: "Role"
     text: "Founder, CEO, CTO"
   - title: "Status"
-    text: "Operating"
+    text: "Operating. [Link](https://photobyme.ca/)"
   # - title: "Website"
   #   text: "[photobyme.ca](https://photobyme.ca)"    
 gallery:
@@ -28,7 +28,7 @@ tags: [photobyme, business]
 
 
 ## Snapshot  
-Photobyme is Western Canada’s **first self-portrait studio**, launched in 2022. We also offer a handcrafted photo-booth rental service for events.  
+`Photobyme` is Western Canada’s **first self-portrait studio**, launched in 2022. We also offer a handcrafted photo-booth rental service for events.  
 
 - **1,000 + sessions booked**  
 - **5.0★ Google rating** – see reviews [here](https://maps.app.goo.gl/AjYKC9XZF8fytPdZ6)

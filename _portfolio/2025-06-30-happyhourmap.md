@@ -8,19 +8,23 @@ sidebar:
   - title: "Role"
     text: "Full Stack"
   - title: "Status"
-    text: "Operating [Link](https://happyhourmap.app/)"
+    text: "Operating. [Link](https://happyhourmap.app/)"
   # - title: "Website"
   #   text: "[photobyme.ca](https://photobyme.ca)"    
 gallery:
-  - url: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/beige.jpeg?resize=683%2C1024&ssl=1
-    image_path: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/beige.jpeg?resize=683%2C1024&ssl=1
-    alt: "self-portrait photo1"
-  - url: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/Screen-Shot-2024-05-21-at-11.16.34-AM-1.png?resize=675%2C1024&ssl=1
-    image_path: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/Screen-Shot-2024-05-21-at-11.16.34-AM-1.png?resize=675%2C1024&ssl=1
-    alt: "self-portrait photo2"
-  - url: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/self-BW-wide.webp?resize=683%2C1024&ssl=1
-    image_path: https://i0.wp.com/photobyme.ca/wp-content/uploads/2024/05/self-BW-wide.webp?resize=683%2C1024&ssl=1
-    alt: "self-portrait photo3"        
+  - url: assets/images/portfolio/happyhour/gallery1.png
+    image_path: assets/images/portfolio/happyhour/gallery1.png
+    alt: "gallery1"
+  - url: assets/images/portfolio/happyhour/gallery2.png
+    image_path: assets/images/portfolio/happyhour/gallery2.png
+    alt: "gallery2"
+gallery2:
+  - url: assets/images/portfolio/happyhour/mobile.png
+    image_path: assets/images/portfolio/happyhour/mobile.png
+    alt: "mobile"
+  - url: assets/images/portfolio/happyhour/gallery1.png
+    image_path: assets/images/portfolio/happyhour/gallery1.png
+    alt: "gallery1"    
 author_profile: true
 layout: single
 tags: [happyhourmap, business]
@@ -28,72 +32,41 @@ tags: [happyhourmap, business]
 
 
 ## Snapshot  
-Photobyme is Western Canada’s **first self-portrait studio**, launched in 2022. We also offer a handcrafted photo-booth rental service for events.  
+`HappyHourMap` is a location-based web application that connects users with nearby happy hour specials. The platform offers real-time filtering by time, distance, cuisine category, and deal type, helping users discover relevant promotions while driving traffic to local establishments.
 
-- **1,000 + sessions booked**  
-- **5.0★ Google rating** – see reviews [here](https://maps.app.goo.gl/AjYKC9XZF8fytPdZ6)
-
-{% include gallery caption="Self-Portrait Photography & Photo-booth Rental" %}
+{% include gallery caption="HappyHourMap Web Application" %}
 
 ## Market Problem
-### Overpriced, Overbooked Shoots  
+### Fragmented Discovery Experience
 
-Traditional photographers charge premium rates and fill their calendars weeks in advance—overkill for customers who just need high-quality, affordable images.  
+Despite their popularity, happy hour specials remain difficult for consumers to discover without visiting multiple websites or social media accounts.
 
+### Limited Promotional Channels for Restaurants
 
-### Cookie-Cutter Photo-Booths  
-
-Most rental booths are plastic, visually clash with wood-accented Canadian venues, and still cost a premium.
-
-
-## My Solution 
-### Self-Portrait Photography
-
-A fully equipped, walk-in studio—no photographer required. Sessions start at **CA$75**, generating **300 + shoots in year 1**.  
-
-### Wooden Photo-booth
-
-A wood-clad booth we engineered and built **completely in-house**—unlike competitors who buy expensive off-the-shelf units. This removes vendor mark-ups, maintenance contracts, and tool-rental fees, letting us match rustic wedding aesthetics and offer prices **30–40 % lower** than typical photo-booth rentals.
+Small and independent restaurants lack effective digital platforms to showcase their happy hour specials and increase visibility. Existing review sites rarely highlight these promotions despite their ability to drive significant foot traffic during off-peak hours.
 
 ## Key Contrinution
 
-### Built Company Website 
+### Tech Stack
+- Frontend: `React`, `TypeScript`
+- Backend: `Node.js`
+- Data Scraping with AI: `Python`, `Ollama`, `LangChain`,`BeautifulSoup`, `Pandas` 
 
-Built company website using `React` with `TypeScript` and `Square checkout`. [Link](https://photobyme.ca)
+### Built Responsive Full Stack Web Application
+
+Designed and developed a responsive web application using `React`, `TypeScript`, and `Node.js` backend. Implemented geolocation services with the `Google Maps API` for proximity-based results and real-time filtering capabilities. [Live Site](https://happyhourmap.app/)
+
+{% include gallery id="gallery2" caption="HappyHourMap Mobile & Desktop View" %}
 
 
-![Alt text](/assets/images/portfolio/photobyme/website.jpg)
+### Intelligent Data Collection System
 
-### Set up automated Photography who anyone can do it
+Developed a sophisticated data pipeline that combines web scraping with AI-powered data extraction. Using `Python`, `BeautifulSoup`, and `LangChain` with local LLMs (`Ollama`), the system autonomously harvests happy hour information from diverse web sources, processes unstructured data, and standardizes it for database storage—reducing manual data entry by over 85%.
 
-Set up automated phptography peipleline anyone can use it without any photography background.
+### SEO & Performance Optimization
 
-### Built AI chatbot to reduce customer support time
-
-Built AI chatbot to reduce customer support time with `Python`, `LangChain`, `Ollama` and `RAG`.
+Implemented hybrid rendering architecture combining server-side rendering (SSR) for initial page loads and client-side rendering (CSR) for subsequent interactions. This approach improved SEO metrics by 45% while maintaining sub-2 second load times and high Lighthouse performance scores.
 
 ## Resources 
 
-- [Photobyme Website](https://photobyme.ca)
-- [Photobyme Google Maps](https://maps.app.goo.gl/S5aKUw6ytfeEpeLm9)
-- [Photobyme Instagram](https://www.instagram.com/photobyme.ca/)
-
-<!-- ## Results & Metrics
-- **⏱ 70 % faster turnaround**: delivery time dropped from 72 h → 22 h.  
-- **📈 1 000 + shoots** completed, averaging **85 % capacity utilisation**.  
-- **💰 30 % MoM revenue growth** in first year, fully self-funded.  
-- **🔄 32 % repeat-booking rate**, surpassing the 30 % goal.
-
-## Lessons Learned
-- Automating Lightroom presets via CLI saved ~8 h/week of manual editing.  
-- Early investment in a headless CMS (Contentful) simplified multi-channel marketing.  
-- Next step: migrate image processing to AWS Lambda for on-demand scaling. -->
-
-<!-- 
-## Related Posts 
-
-| Post Title | Date |
-| --- | --- |
-| [Post 1](/posts/2025-07-30-b/) | 2025-07-30 |
-| [Post 2](/posts/2025-07-30-b/) | 2025-07-30 |
-| [Post 3](/posts/2025-07-30-b/) | 2025-07-30 | -->
+- [HappyHourMap Website](https://happyhourmap.app)
