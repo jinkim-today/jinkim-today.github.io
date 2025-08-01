@@ -1,5 +1,5 @@
 ---
-title: "Manufacturing Defect Detection System"
+title: "Manufacturing Defect Detection"
 excerpt: "Custom defect detection system developed for a South Korean manufacturing firm via international outsourcing contract"
 header:
   # image: /assets/images/test.jpg
@@ -35,4 +35,4 @@ This Manufacturing `Defect Detection` system was developed for a manufacturing c
 
 ### Computer Vision Quality Assurance
 
-Implemented a computer vision module that automatically inspects products for defects with 98.5% accuracy, significantly improving quality control efficiency. The system provides real-time feedback to production staff and integrates seamlessly with the ERP's tracking features.
+Implemented a computer vision module that automatically inspects products for defects, significantly improving quality control efficiency. The system provides real-time feedback to production staff and integrates seamlessly with the ERP's tracking features.

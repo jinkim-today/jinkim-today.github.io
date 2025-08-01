@@ -59,27 +59,27 @@ The client identified AI integration as a strategic priority to enhance decision
 
 ### Production & Quality Control Tracking
 
-Implemented a comprehensive tracking system that manages production and receiving logs with integrated barcode scanning capabilities. The system enables real-time defect identification, root cause analysis, and production line monitoring through an intuitive interface. Quality control managers can instantly generate performance reports and identify recurring issues, reducing defect rates by 23% within four months.
+Implementing a comprehensive tracking system that manages production and receiving logs with integrated barcode scanning capabilities. The system enables real-time defect identification, root cause analysis, and production line monitoring through an intuitive interface. Quality control managers can instantly generate performance reports and identify recurring issues to improve manufacturing quality.
 
 ### Streamlined Supplier Integration
 
-Developed a secure supplier portal that eliminates paper-based processes and manual data entry. External suppliers now upload inventory manifests directly through a dedicated interface, which automatically integrates with the ERP system. This innovation reduced processing time by 78% and virtually eliminated transcription errors that previously plagued the receiving process.
+Developing a secure supplier portal that eliminates paper-based processes and manual data entry. External suppliers will be able to upload inventory manifests directly through a dedicated interface, which automatically integrates with the ERP system. This innovation aims to reduce processing time and minimize transcription errors in the receiving process.
 
 {% include gallery id="gallery2" caption="Production Log Management" %}
 
 ### Automated Certification System
 
-Designed an automated certification generation system that produces standardized quality assurance documents required by downstream customers. The system dynamically creates certificates based on production data, allowing export to PDF, Excel, or direct sharing via secure AWS S3 presigned URLs. This feature alone saved approximately 15 labor hours per week previously spent on manual certificate creation.
+Designing an automated certification generation system that produces standardized quality assurance documents required by downstream customers. The system will dynamically create certificates based on production data, allowing export to PDF, Excel, or direct sharing via secure AWS S3 presigned URLs. This feature aims to significantly reduce the time spent on manual certificate creation.
 
 {% include gallery id="gallery3" caption="Automated Certificate Generation" %}
 
 ### AI-Powered Analytics Dashboard
 
-Integrated PostgreSQL data with a Retrieval Augmented Generation (RAG) system that provides AI-powered production analytics. The dashboard offers natural language querying of complex production data, predictive maintenance alerts, and anomaly detection capabilities. Management can now identify operational trends and make data-driven decisions without requiring specialized data analysis expertise.
+Integrating PostgreSQL data with a Retrieval Augmented Generation (RAG) system to provide AI-powered production analytics. The dashboard will offer natural language querying of complex production data, predictive maintenance alerts, and anomaly detection capabilities. This will allow management to identify operational trends and make data-driven decisions without requiring specialized data analysis expertise.
 
 ### Computer Vision Quality Assurance
 
-Implemented a computer vision module that automatically inspects products for defects with 98.5% accuracy, significantly improving quality control efficiency. The system provides real-time feedback to production staff and integrates seamlessly with the ERP's tracking features. Additional details about this cutting-edge capability are available in a [dedicated portfolio entry](/portfolio/2025-07-10-computer-vision-for-quality-control).
+Developing a computer vision module that automatically inspects products for defects, with the goal of significantly improving quality control efficiency. The system will provide real-time feedback to production staff and integrate seamlessly with the ERP's tracking features. Additional details about this cutting-edge capability are available in a [dedicated portfolio entry](/portfolio/2025-07-20-manufacturing-defect-detection).
 
 ## Key Contrinution
 
@@ -102,11 +102,11 @@ Designed a comprehensive data model using Entity Relationship Modeling (ERM) tec
 
 ### Cloud Infrastructure & Deployment
 
-Established a robust cloud infrastructure on `AWS EC2` with containerized application components using `Docker`. Implemented automated backup systems to `AWS S3` and created a CI/CD pipeline that enabled continuous deployment with minimal downtime. This architecture ensures 99.9% system availability while allowing secure remote access for the client's distributed workforce.
+Establishing a robust cloud infrastructure on `AWS EC2` with containerized application components using `Docker`. Implementing automated backup systems to `AWS S3` and creating a CI/CD pipeline that enables continuous deployment with minimal downtime. This architecture aims to ensure high system availability while allowing secure remote access for the client's distributed workforce.
 
 ### AI-Powered Forecasting
 
-Developed a custom AI module using `Python`, `LangChain` and local LLMs via `Ollama` that analyzes historical production data to forecast material requirements and identify potential bottlenecks. The system employs a `RAG` (Retrieval Augmented Generation) approach to incorporate company-specific knowledge with predictive analytics, improving inventory planning accuracy by 37% and reducing stockouts by over 40% within the first three months of implementation. 
+Developing a custom AI module using `Python`, `LangChain` and local LLMs via `Ollama` that analyzes historical production data to forecast material requirements and identify potential bottlenecks. The system employs a `RAG` (Retrieval Augmented Generation) approach to incorporate company-specific knowledge with predictive analytics, with the goal of improving inventory planning accuracy and reducing stockouts. 
 
 ### Resources 
 

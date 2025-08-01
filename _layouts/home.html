@@ -2,9 +2,34 @@
 layout: archive
 ---
 
+<!-- Portfolio Section -->
+<h3 class="archive__subtitle" style="margin-bottom: 2em;">Featured Projects</h3>
+
+<div class="grid__wrapper">
+  {% assign sorted_portfolio = site.portfolio | sort: 'date' | reverse %}
+  {% for post in sorted_portfolio limit:3 %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+</div>
+
+<a href="/portfolio/" class="btn">View All Projects</a>
+
+<style>
+  .portfolio-section {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #f2f3f3;
+  }
+  .portfolio-section .btn {
+    margin-top: 1em;
+    display: inline-block;
+  }
+</style>
+
+
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+<h3 class="archive__subtitle" style="margin-bottom: 1em;">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
 {% if paginator %}
   {% assign posts = paginator.posts %}
@@ -18,3 +43,4 @@ layout: archive
 </div>
 
 {% include paginator.html %}
+
