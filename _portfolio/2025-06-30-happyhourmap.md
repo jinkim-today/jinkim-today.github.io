@@ -54,7 +54,7 @@ Small and independent restaurants lack effective digital platforms to showcase t
 
 ### Built Responsive Full Stack Web Application
 
-Designed and developed a responsive web application using `React`, `TypeScript`, and `Node.js` backend. Implemented geolocation services with the `Google Maps API` for proximity-based results and real-time filtering capabilities. [Live Site](https://happyhourmap.app/)
+Designed and developed a responsive web application using `React`, `TypeScript`, and `Node.js` backend. Implemented geolocation services with the `Google Maps API` for proximity-based results and real-time filtering capabilities. [Link](https://happyhourmap.app/)
 
 {% include gallery id="gallery2" caption="HappyHourMap Mobile & Desktop View" %}
 
