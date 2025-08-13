@@ -2,6 +2,7 @@
 title: "From Solo Work to Team Player: My Co-op Journey"
 show_title: false
 date: 2025-07-30
+excerpt: "Essential lessons I learned to become an effective team player during co-op"
 layout: single
 permalink: /posts/2025-07-30-from-solo-work-to-team-player/
 tags: [collaboration, work, team, communication]
