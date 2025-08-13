@@ -1,6 +1,6 @@
 ---
-title: "Manufacturing Company ERP"
-excerpt: "Custom ERP system developed for a South Korean manufacturing firm via international outsourcing contract"
+title: "[Outsourcing] AI Powered ERP"
+excerpt: "AI-powered ERP system developed for a South Korean manufacturing firm via international outsourcing contract"
 header:
   # image: /assets/images/test.jpg
   teaser: /assets/images/portfolio/manufacturing-erp/dashboard.png
@@ -32,7 +32,9 @@ gallery3:
     alt: "certificate2"    
 author_profile: true
 layout: single
-tags: [manufacturing-erp, business]
+date: 2025-07-10
+updated: 2025-07-31
+tags: [manufacturing-erp, business, outsourcing]
 ---
 
 
@@ -40,6 +42,12 @@ tags: [manufacturing-erp, business]
 This custom `ERP` system was developed as a comprehensive web application for a manufacturing company based in Busan, South Korea. Secured through an international outsourcing contract, the system provides integrated management of production processes, inventory control, and business operations exclusively for internal company use.
 
 {% include gallery caption="Manufacturing Company ERP" %}
+
+## Related Posts
+
+| Title | Date |
+| --- | --- |
+| [Manufacturing Defect Detection](/portfolio/2025-07-20-manufacturing-defect-detection) | 2025-07-20 |
 
 ## Industry Challenges
 
