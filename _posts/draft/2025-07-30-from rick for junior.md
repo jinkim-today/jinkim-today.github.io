@@ -68,4 +68,6 @@ good code at production level
 - matching codebase 
 - documenation / testing
 
+ask fast
+
 -->
