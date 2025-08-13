@@ -7,7 +7,7 @@ tags: [collaboration, work, team, communication]
 collection: posts
 author_profile: true
 ---
-# From Solo Work to Team Player: My Co-op Journey
+<!-- # From Solo Work to Team Player: My Co-op Journey -->
 
 <!-- ((overview)) -->
 

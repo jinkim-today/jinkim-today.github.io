@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "How to Work as Team"
 date: 2025-07-30
 layout: single
@@ -6,7 +6,7 @@ permalink: /posts/2025-07-30-team-work/
 tags: [collaboration, work, team]
 collection: posts
 author_profile: true
----
+--- -->
 
 # How to Work as Team
 <!-- ((overview)) -->

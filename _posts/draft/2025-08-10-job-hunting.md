@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "New Perspective about Job Hunting"
 date: 2025-08-10
 layout: single
@@ -6,7 +6,7 @@ permalink: /posts/2025-08-10-job-hunting/
 tags: [job, hunting, resume]
 collection: posts
 author_profile: true
----
+--- -->
 
 <!-- 
 ((overview))
