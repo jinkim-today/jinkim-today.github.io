@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Headline } from "@/components/Headline";
-import { Pill } from "@/components/ui/Pill";
+import { Status, Tags } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Project } from "@/lib/content";
 
@@ -83,7 +83,7 @@ export function ProjectBento({
       <Link
         href={`/projects/${project.slug}/`}
         style={{ "--accent": project.accent } as React.CSSProperties}
-        className={`group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-colors duration-200 hover:border-[var(--accent)] focus-visible:border-[var(--accent)] ${layout}`}
+        className={`group flex h-full flex-col overflow-hidden rounded-lg bg-card ${layout}`}
       >
         <div
           className={`relative overflow-hidden ${coverBox}`}
@@ -115,13 +115,11 @@ export function ProjectBento({
                 {num} · {project.year}
               </span>
               {rich && (
-                <span className="label rounded-full border border-line px-2.5 py-0.5 text-muted">
-                  {project.status}
-                </span>
+                <Status>{project.status}</Status>
               )}
             </div>
             <h3
-              className={`mt-3 font-display font-extrabold leading-tight tracking-tight ${title}`}
+              className={`mt-3 font-display underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current group-focus-visible:decoration-current font-extrabold leading-tight tracking-tight ${title}`}
             >
               {project.title}
             </h3>
@@ -134,11 +132,7 @@ export function ProjectBento({
             </p>
           </div>
           <div className="mt-5 flex items-end justify-between gap-3">
-            <div className="flex flex-wrap gap-2">
-              {project.tags.slice(0, rich ? 3 : 2).map((t) => (
-                <Pill key={t}>{t}</Pill>
-              ))}
-            </div>
+            <Tags items={project.tags.slice(0, rich ? 3 : 2)} />
             <Arrow />
           </div>
         </div>

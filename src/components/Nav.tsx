@@ -16,12 +16,12 @@ export function Nav() {
   }, []);
 
   const tone = scrolled
-    ? "bg-bg text-fg border-line"
-    : "bg-transparent text-cream border-transparent";
+    ? "bg-bg text-fg"
+    : "bg-transparent text-cream";
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${tone}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${tone}`}
     >
       <nav
         aria-label="Primary"

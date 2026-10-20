@@ -76,7 +76,7 @@ export default async function ProjectPage({
           <p className="mt-6 max-w-3xl text-xl md:text-2xl">
             <Headline text={p.headline} />
           </p>
-          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-cream/40 pt-6 md:grid-cols-5">
+          <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5">
             {meta.map(([k, v]) => (
               <div key={k}>
                 <dt className="label opacity-70">{k}</dt>
@@ -97,7 +97,7 @@ export default async function ProjectPage({
       <div className="wrap gutter py-14 md:py-20">
         <div className="mx-auto max-w-3xl">
           <Reveal>
-            <aside className="rounded-lg border border-line bg-card p-5 md:p-6" lang="ko">
+            <aside className="rounded-lg bg-card p-5 md:p-6" lang="ko">
               <p className="label text-muted">요약</p>
               <p className="mt-2 text-base">{p.summary_kr}</p>
             </aside>
@@ -108,11 +108,8 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <nav
-        aria-label="More projects"
-        className="border-t border-line"
-      >
-        <div className="wrap gutter grid grid-cols-1 gap-px bg-line md:grid-cols-2">
+      <nav aria-label="More projects" className="bg-card">
+        <div className="wrap gutter grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8">
           {[
             { label: "Previous", project: prev, align: "" },
             { label: "Next", project: next, align: "md:text-right" },
@@ -120,10 +117,10 @@ export default async function ProjectPage({
             <Link
               key={label}
               href={`/projects/${project.slug}/`}
-              className={`block bg-bg py-8 md:py-12 ${align}`}
+              className={`group block py-8 md:py-12 ${align}`}
             >
               <span className="label text-muted">{label}</span>
-              <span className="display mt-2 block text-2xl md:text-4xl">
+              <span className="display mt-2 block text-2xl underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current md:text-4xl">
                 {project.title}
               </span>
             </Link>

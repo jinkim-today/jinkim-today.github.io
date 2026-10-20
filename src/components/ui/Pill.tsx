@@ -1,20 +1,43 @@
 import type { ReactNode } from "react";
 
-export function Pill({
+type Tone = "onBlue" | "onLight";
+
+/** Plain uppercase tags joined with " · ". No pill, no outline. */
+export function Tags({
+  items,
+  tone = "onLight",
+}: {
+  items: string[];
+  tone?: Tone;
+}) {
+  return (
+    <span
+      className={`label ${tone === "onBlue" ? "text-cream/80" : "text-muted"}`}
+    >
+      {items.join(" · ")}
+    </span>
+  );
+}
+
+/** Small colored dot + text status. No pill. */
+export function Status({
   children,
   tone = "onLight",
 }: {
   children: ReactNode;
-  tone?: "onBlue" | "onLight";
+  tone?: Tone;
 }) {
-  const color =
-    tone === "onBlue"
-      ? "border-cream/60 text-cream"
-      : "border-line text-muted";
   return (
     <span
-      className={`label inline-flex items-center rounded-full border px-3 py-1 ${color}`}
+      className={`label inline-flex items-center gap-2 ${
+        tone === "onBlue" ? "text-cream/80" : "text-muted"
+      }`}
     >
+      <span
+        aria-hidden
+        className="inline-block h-1.5 w-1.5 rounded-full bg-current"
+        style={{ color: tone === "onBlue" ? "#7CFFB2" : "#16a34a" }}
+      />
       {children}
     </span>
   );

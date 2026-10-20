@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Headline } from "@/components/Headline";
 import { ProjectBento, bentoSize } from "@/components/ProjectBento";
-import { Button } from "@/components/ui/Button";
+import { Button, TextLink } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
-import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import {
   aboutSummary,
@@ -51,7 +50,7 @@ export default function Home() {
       <section className="bg-blue text-cream">
         <div className="wrap gutter pb-20 pt-32 md:pb-28 md:pt-40">
           <Reveal>
-            <Pill tone="onBlue">{badgeText}</Pill>
+            <p className="label text-cream/80">{badgeText}</p>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="display h1-hero mt-8 max-w-[18ch]">{heroTitle}</h1>
@@ -59,21 +58,21 @@ export default function Home() {
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-2xl text-xl opacity-90">{heroSubline}</p>
           </Reveal>
-          <Reveal delay={0.15} className="mt-10 flex flex-wrap gap-3">
+          <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center gap-3">
             <Button href="#projects">See projects ↓</Button>
-            <Button href={contact.resume} variant="outline">
+            <TextLink href={contact.resume} className="px-2 py-3">
               Download resume
-            </Button>
+            </TextLink>
           </Reveal>
         </div>
 
-        <div className="border-t border-cream/30 py-6">
+        <div className="py-6">
           <Marquee>
             {featured.map((p) => (
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}/`}
-                className="group relative mr-4 block w-[72vw] max-w-[28rem] shrink-0 overflow-hidden border border-cream/30"
+                className="group relative mr-4 block w-[72vw] max-w-[28rem] shrink-0 overflow-hidden"
               >
                 <Image
                   src={p.cover}
@@ -117,15 +116,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-bg">
+      <section className="bg-band">
         <div className="wrap gutter py-20 md:py-28">
           <Reveal>
             <p className="label text-muted">Approach</p>
             <h2 className="display h2-section mt-3">How I work</h2>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
             {howIWork.map((s, i) => (
-              <Reveal key={s.step} delay={i * 0.08} className="bg-bg p-6 md:p-8">
+              <Reveal key={s.step} delay={i * 0.08} >
                 <p className="label text-muted">{s.step}</p>
                 <h3 className="display mt-4 text-3xl">{s.title}</h3>
                 <p className="mt-4 text-base text-muted">{s.body}</p>
