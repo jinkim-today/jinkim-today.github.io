@@ -12,6 +12,9 @@ export const heroTitle =
 export const heroSubline =
   "Fullstack and AI engineer. I sit with the people doing the work, build the tool in their language, and train them to run it without me.";
 
+export const projectsSubline =
+  "Everything I have shipped, on-site and in production.";
+
 export const footerTitle = "Let's build something.";
 
 export const contact = {

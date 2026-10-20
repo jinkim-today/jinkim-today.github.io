@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Headline } from "@/components/Headline";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectBento, bentoSize } from "@/components/ProjectBento";
 import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
 import { Pill } from "@/components/ui/Pill";
@@ -13,6 +13,7 @@ import {
   contact,
   heroSubline,
   heroTitle,
+  projectsSubline,
   howIWork,
   siteDescription,
   siteTitle,
@@ -94,14 +95,23 @@ export default function Home() {
       <section id="projects" className="bg-bg">
         <div className="wrap gutter py-20 md:py-28">
           <Reveal>
-            <p className="label text-muted">Selected work</p>
-            <h2 className="display h2-section mt-3">All projects</h2>
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="label text-muted">Selected work</p>
+                <h2 className="display h2-section mt-3">All projects</h2>
+              </div>
+              <p className="label shrink-0 text-muted">{projects.length} projects</p>
+            </div>
+            <p className="mt-4 max-w-2xl text-muted">{projectsSubline}</p>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
             {projects.map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 2) * 0.08}>
-                <ProjectCard project={p} />
-              </Reveal>
+              <ProjectBento
+                key={p.slug}
+                project={p}
+                index={i}
+                size={bentoSize(i, projects.length)}
+              />
             ))}
           </div>
         </div>
