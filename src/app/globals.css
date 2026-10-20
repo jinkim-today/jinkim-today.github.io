@@ -176,3 +176,15 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Hero typewriter caret */
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .h1-hero [style*="caret-blink"] {
+    animation: none !important;
+  }
+}

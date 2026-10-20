@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+export type Stat = { value: string; label: string };
+
 export type Project = {
   slug: string;
   title: string;
@@ -14,6 +16,7 @@ export type Project = {
   accent: string;
   /** Contains **bold** markers around numbers. Use plainHeadline() for metadata. */
   headline: string;
+  stats: Stat[];
   tags: string[];
   order: number;
   featured: boolean;
@@ -46,6 +49,7 @@ export function getProjects(): Project[] {
         cover: data.cover,
         accent: data.accent ?? "#0A1FFF",
         headline: data.headline,
+        stats: ((data.stats ?? []) as Stat[]).slice(0, 2),
         tags: data.tags ?? [],
         order: data.order ?? 999,
         featured: Boolean(data.featured),

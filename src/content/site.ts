@@ -49,3 +49,13 @@ export const aboutSummary = [
   "I have built and shipped products as a founder, a consultant, and the sole engineer on small teams.",
   "I work best close to the people who use the software.",
 ];
+
+// Hero typewriter timing.
+export const typewriter = {
+  msPerChar: 35,
+  /** Subline and CTA appear after typing ends or this long, whichever is later. */
+  minRevealMs: 1200,
+  caretBlinkMs: 1000,
+  /** Blinks the caret stays after typing finishes before it fades. */
+  caretBlinks: 2,
+};

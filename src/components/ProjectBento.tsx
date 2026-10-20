@@ -1,25 +1,15 @@
+"use client";
+
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { Headline } from "@/components/Headline";
 import { Status, Tags } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
+import { StatNumber } from "@/components/ui/StatNumber";
+import type { BentoSize } from "@/lib/bento";
 import type { Project } from "@/lib/content";
-
-export type BentoSize = "feature" | "wide" | "small" | "full";
-
-/**
- * Derive the card size from its index so any project count degrades gracefully:
- * feature, then repeating [wide, small, small] / [small, small, wide], last one full-low.
- */
-export function bentoSize(index: number, total: number): BentoSize {
-  if (index === 0) return "feature";
-  if (total > 2 && index === total - 1) return "full";
-  const j = index - 1;
-  const g = Math.floor(j / 3);
-  const k = j % 3;
-  const wideAt = g % 2 === 0 ? 0 : 2;
-  return k === wideAt ? "wide" : "small";
-}
 
 // 12-col grid on lg; 2 cols on sm; 1 col on mobile. Literal strings for Tailwind.
 const SPAN: Record<BentoSize, string> = {
@@ -40,6 +30,58 @@ function Arrow() {
   );
 }
 
+function Stat({
+  stat,
+  big,
+}: {
+  stat: { value: string; label: string };
+  big: boolean;
+}) {
+  return (
+    <div className="min-w-0">
+      <StatNumber
+        value={stat.value}
+        className={`numeral block whitespace-nowrap ${
+          big ? "text-[clamp(2.75rem,5vw,5.5rem)]" : "text-[clamp(2rem,3.5vw,3.25rem)]"
+        }`}
+      />
+      <p className="mt-2 max-w-[22ch] text-[0.8rem] leading-snug text-cream/70">
+        {stat.label}
+      </p>
+    </div>
+  );
+}
+
+/** Cover image with a subtle scroll parallax (desktop only, not under reduced motion). */
+function ParallaxCover({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const [desktop, setDesktop] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const on = () => setDesktop(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  const active = desktop && !reduce;
+  return (
+    <div ref={ref} className="h-full w-full">
+      <motion.div
+        className="h-full w-full"
+        style={active ? { y, scale: 1.08 } : undefined}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
 export function ProjectBento({
   project,
   index,
@@ -51,12 +93,15 @@ export function ProjectBento({
 }) {
   const horizontal = size === "feature" || size === "full";
   const rich = size !== "small";
+  const stats = project.stats;
+  const hasStats = stats.length > 0;
+  const bigStat = size === "feature" || size === "wide";
   const isBlue = project.accent.toLowerCase() === "#0a1fff";
   const num = String(index + 1).padStart(2, "0");
 
   const layout = horizontal
     ? size === "feature"
-      ? "sm:flex-row lg:h-[420px]"
+      ? "sm:flex-row lg:min-h-[420px]"
       : "sm:flex-row lg:h-[200px]"
     : "";
   const coverBox = horizontal
@@ -80,7 +125,7 @@ export function ProjectBento({
           : "text-xl";
 
   return (
-    <Reveal delay={(index % 3) * 0.06} className={`${SPAN[size]} min-w-0`}>
+    <Reveal delay={(index % 3) * 0.06} y={32} scale={0.98} duration={0.5} className={`${SPAN[size]} min-w-0`}>
       <Link
         href={`/projects/${project.slug}/`}
         style={{ "--accent": project.accent } as React.CSSProperties}
@@ -90,13 +135,15 @@ export function ProjectBento({
           className={`relative overflow-hidden ${coverBox}`}
           style={{ backgroundColor: isBlue ? "#F3EEE3" : project.accent }}
         >
-          <Image
-            src={project.cover}
-            alt={`${project.title} cover`}
-            width={1600}
-            height={1000}
-            className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
-          />
+          <ParallaxCover>
+            <Image
+              src={project.cover}
+              alt={`${project.title} cover`}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+            />
+          </ParallaxCover>
           <span
             aria-hidden
             className={`numeral pointer-events-none absolute left-4 top-3 ${isBlue ? "text-ink/80" : "text-cream/90"} ${numeral}`}
@@ -124,14 +171,29 @@ export function ProjectBento({
             >
               {project.title}
             </h3>
-            <p
-              className={`mt-3 text-base text-cream/70 ${
-                rich ? (size === "full" ? "lg:line-clamp-2" : "") : "truncate"
-              }`}
-            >
-              <Headline text={project.headline} />
-            </p>
+            {size === "small" && hasStats ? (
+              <div className="mt-6">
+                <Stat stat={stats[0]} big={false} />
+              </div>
+            ) : (
+              <p
+                className={`mt-3 text-cream/70 ${
+                  bigStat && hasStats ? "text-[0.95rem]" : "text-base"
+                } ${size === "full" ? "lg:line-clamp-2" : ""} ${
+                  size === "small" ? "truncate" : ""
+                }`}
+              >
+                <Headline text={project.headline} />
+              </p>
+            )}
           </div>
+          {bigStat && hasStats && (
+            <div className="mt-6 flex flex-wrap gap-x-10 gap-y-5">
+              {stats.map((s) => (
+                <Stat key={s.value} stat={s} big />
+              ))}
+            </div>
+          )}
           <div className="mt-5 flex items-end justify-between gap-3">
             <Tags tone="onBlue" items={project.tags.slice(0, rich ? 3 : 2)} />
             <Arrow />

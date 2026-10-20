@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Hero } from "@/components/Hero";
 import { Headline } from "@/components/Headline";
-import { ProjectBento, bentoSize } from "@/components/ProjectBento";
-import { Button, TextLink } from "@/components/ui/Button";
+import { ProjectBento } from "@/components/ProjectBento";
+import { bentoSize } from "@/lib/bento";
+import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
-import { Reveal } from "@/components/ui/Reveal";
+import { HairlineGrow, Reveal } from "@/components/ui/Reveal";
 import {
   aboutSummary,
-  badgeText,
   contact,
-  heroSubline,
-  heroTitle,
   projectsSubline,
   howIWork,
   siteDescription,
@@ -49,21 +48,7 @@ export default function Home() {
 
       <section className="bg-blue text-cream">
         <div className="wrap gutter pb-20 pt-32 md:pb-28 md:pt-40">
-          <Reveal>
-            <p className="label text-cream/80">{badgeText}</p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="display h1-hero mt-8 max-w-[18ch]">{heroTitle}</h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-8 max-w-2xl text-xl opacity-90">{heroSubline}</p>
-          </Reveal>
-          <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center gap-3">
-            <Button href="#projects">See projects ↓</Button>
-            <TextLink href={contact.resume} className="px-2 py-3">
-              Download resume
-            </TextLink>
-          </Reveal>
+          <Hero />
         </div>
 
         <div className="py-6">
@@ -93,14 +78,20 @@ export default function Home() {
 
       <section id="projects" className="bg-blue text-cream">
         <div className="wrap gutter pb-20 pt-6 md:pb-28 md:pt-10">
-          <Reveal>
-            <div className="flex items-end justify-between gap-4">
-              <div>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <Reveal y={24}>
                 <p className="label text-cream/70">Selected work</p>
+              </Reveal>
+              <Reveal y={24} delay={0.08}>
                 <h2 className="display h2-section mt-3">All projects</h2>
-              </div>
-              <p className="label shrink-0 text-cream/70">{projects.length} projects</p>
+              </Reveal>
             </div>
+            <Reveal y={0} delay={0.3} className="shrink-0">
+              <p className="label text-cream/70">{projects.length} projects</p>
+            </Reveal>
+          </div>
+          <Reveal y={16} delay={0.16}>
             <p className="mt-4 max-w-2xl text-cream/70">{projectsSubline}</p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-12">
@@ -118,17 +109,26 @@ export default function Home() {
 
       <section className="bg-band">
         <div className="wrap gutter py-20 md:py-28">
-          <Reveal>
+          <Reveal y={24}>
             <p className="label text-muted">Approach</p>
+          </Reveal>
+          <Reveal y={24} delay={0.08}>
             <h2 className="display h2-section mt-3">How I work</h2>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
+          <HairlineGrow className="mt-12" />
+          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
             {howIWork.map((s, i) => (
-              <Reveal key={s.step} delay={i * 0.08} >
-                <p className="numeral text-[clamp(4rem,8vw,7rem)]">{s.step}</p>
-                <h3 className="display mt-6 text-3xl">{s.title}</h3>
-                <p className="mt-4 text-base text-muted">{s.body}</p>
-              </Reveal>
+              <div key={s.step}>
+                <Reveal y={40} delay={i * 0.14} duration={0.5}>
+                  <p className="numeral text-[clamp(4rem,8vw,7rem)]">{s.step}</p>
+                </Reveal>
+                <Reveal y={24} delay={i * 0.14 + 0.1}>
+                  <h3 className="display mt-6 text-3xl">{s.title}</h3>
+                </Reveal>
+                <Reveal y={16} delay={i * 0.14 + 0.18}>
+                  <p className="mt-4 text-base text-muted">{s.body}</p>
+                </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -136,9 +136,14 @@ export default function Home() {
 
       <section id="about" className="bg-bg">
         <div className="wrap gutter grid gap-12 py-20 md:grid-cols-2 md:py-28">
-          <Reveal>
+          <div>
+          <Reveal y={24}>
             <p className="label text-muted">About</p>
+          </Reveal>
+          <Reveal y={24} delay={0.08}>
             <h2 className="display h2-section mt-3">Hi, I am Jin.</h2>
+          </Reveal>
+          <Reveal delay={0.16}>
             <div className="mt-6 space-y-3">
               {aboutSummary.map((s) => (
                 <p key={s}>{s}</p>
@@ -150,6 +155,7 @@ export default function Home() {
               </Link>
             </p>
           </Reveal>
+          </div>
           <Reveal delay={0.08}>
             <p className="label text-muted">Contact</p>
             <ul className="mt-3 space-y-2 text-xl">

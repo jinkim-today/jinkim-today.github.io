@@ -1,19 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { contact, siteTitle } from "@/content/site";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > (pathname === "/" ? window.innerHeight * 0.6 : 24));
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   const tone = scrolled
     ? "bg-bg text-fg"
@@ -21,7 +23,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${tone}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${tone}`}
     >
       <nav
         aria-label="Primary"

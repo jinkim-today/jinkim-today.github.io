@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Headline } from "@/components/Headline";
+import { MotionH2, MotionP, MotionUl } from "@/components/ui/MotionProse";
 import { Reveal } from "@/components/ui/Reveal";
+import { StatNumber } from "@/components/ui/StatNumber";
 import { siteTitle, siteUrl } from "@/content/site";
 import { getAdjacent, getProject, getProjects, plainHeadline } from "@/lib/content";
 
@@ -67,15 +69,37 @@ export default async function ProjectPage({
       />
       <header style={{ backgroundColor: p.accent }} className="text-cream">
         <div className="wrap gutter pb-14 pt-32 md:pb-20 md:pt-40">
-          <Link href="/#projects" className="label underline-offset-4 hover:underline">
-            ← All projects
-          </Link>
-          <h1 className="display mt-8 max-w-[20ch] text-[clamp(2.25rem,6.5vw,6rem)]">
-            {p.title}
-          </h1>
-          <p className="mt-6 max-w-3xl text-xl md:text-2xl">
-            <Headline text={p.headline} />
-          </p>
+          <Reveal onMount>
+            <Link href="/#projects" className="label underline-offset-4 hover:underline">
+              ← All projects
+            </Link>
+          </Reveal>
+          <Reveal onMount delay={0.08} y={24}>
+            <h1 className="display mt-8 max-w-[20ch] text-[clamp(2.25rem,6.5vw,6rem)]">
+              {p.title}
+            </h1>
+          </Reveal>
+          <Reveal onMount delay={0.16} y={24}>
+            <p className="mt-6 max-w-3xl text-xl md:text-2xl">
+              <Headline text={p.headline} />
+            </p>
+          </Reveal>
+          {p.stats.length > 0 && (
+            <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6">
+              {p.stats.map((s) => (
+                <div key={s.value}>
+                  <StatNumber
+                    value={s.value}
+                    className="numeral block whitespace-nowrap text-[clamp(2.75rem,5vw,5.5rem)]"
+                  />
+                  <p className="mt-2 max-w-[24ch] text-[0.8rem] leading-snug text-cream/70">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          <Reveal onMount delay={0.24} y={24}>
           <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5">
             {meta.map(([k, v]) => (
               <div key={k}>
@@ -91,6 +115,7 @@ export default async function ProjectPage({
               </a>
             </p>
           )}
+          </Reveal>
         </div>
       </header>
 
@@ -103,7 +128,10 @@ export default async function ProjectPage({
             </aside>
           </Reveal>
           <div className="case-body mt-6">
-            <MDXRemote source={p.body} />
+            <MDXRemote
+              source={p.body}
+              components={{ h2: MotionH2, p: MotionP, ul: MotionUl }}
+            />
           </div>
         </div>
       </div>
