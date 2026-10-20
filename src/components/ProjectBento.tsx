@@ -97,6 +97,15 @@ export function ProjectBento({
   const hasStats = stats.length > 0;
   const bigStat = size === "feature" || size === "wide";
   const isBlue = project.accent.toLowerCase() === "#0a1fff";
+  const num = String(index + 1).padStart(2, "0");
+  const title =
+    size === "feature"
+      ? "text-3xl lg:text-[2.5rem]"
+      : size === "full"
+        ? "text-2xl lg:text-3xl"
+        : size === "wide"
+          ? "text-2xl"
+          : "text-xl";
 
   const layout = horizontal
     ? size === "feature"
