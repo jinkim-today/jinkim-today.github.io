@@ -188,3 +188,11 @@ body {
     animation: none !important;
   }
 }
+
+/* Case-study code blocks (architecture flow lines) wrap instead of overflowing */
+.case-body pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  overflow-x: auto;
+}

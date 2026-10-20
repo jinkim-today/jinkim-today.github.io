@@ -97,7 +97,6 @@ export function ProjectBento({
   const hasStats = stats.length > 0;
   const bigStat = size === "feature" || size === "wide";
   const isBlue = project.accent.toLowerCase() === "#0a1fff";
-  const num = String(index + 1).padStart(2, "0");
 
   const layout = horizontal
     ? size === "feature"
@@ -109,20 +108,6 @@ export function ProjectBento({
       ? "aspect-[16/10] sm:aspect-auto sm:w-[55%] sm:shrink-0"
       : "aspect-[16/10] sm:aspect-auto sm:w-[40%] sm:shrink-0"
     : "aspect-[16/10]";
-  const numeral =
-    size === "feature"
-      ? "text-8xl"
-      : size === "full"
-        ? "text-5xl"
-        : "text-6xl";
-  const title =
-    size === "feature"
-      ? "text-3xl lg:text-[2.5rem]"
-      : size === "full"
-        ? "text-2xl lg:text-3xl"
-        : size === "wide"
-          ? "text-2xl"
-          : "text-xl";
 
   return (
     <Reveal delay={(index % 3) * 0.06} y={32} scale={0.98} duration={0.5} className={`${SPAN[size]} min-w-0`}>
@@ -144,12 +129,6 @@ export function ProjectBento({
               className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
             />
           </ParallaxCover>
-          <span
-            aria-hidden
-            className={`numeral pointer-events-none absolute left-4 top-3 ${isBlue ? "text-ink/80" : "text-cream/90"} ${numeral}`}
-          >
-            {num}
-          </span>
         </div>
 
         <div
