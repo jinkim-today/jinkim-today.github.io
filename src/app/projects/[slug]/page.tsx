@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -134,6 +135,22 @@ export default async function ProjectPage({
             />
           </div>
         </div>
+        {p.gallery && p.gallery.length > 0 && (
+          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
+            {p.gallery.map((src, i) => (
+              <Reveal key={src} delay={(i % 2) * 0.08}>
+                <Image
+                  src={src}
+                  alt={`${p.title} screenshot ${i + 1}`}
+                  width={1600}
+                  height={1000}
+                  unoptimized
+                  className="h-auto w-full rounded-lg"
+                />
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
 
       <nav aria-label="More projects" className="bg-card">

@@ -1,12 +1,10 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitText } from "@/components/ui/SplitText";
-import { CursorShape } from "@/components/CursorShape";
 import { contact, footerTitle } from "@/content/site";
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-blue text-cream">
-      <CursorShape />
       <div className="wrap gutter relative py-20 md:py-28">
         <p className="display text-[clamp(2.5rem,9vw,8rem)]">
           <SplitText text={footerTitle} stagger={0.12} />

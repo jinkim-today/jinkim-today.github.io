@@ -21,6 +21,7 @@ export type Project = {
   order: number;
   featured: boolean;
   summary_kr: string;
+  gallery?: string[];
   body: string;
 };
 
@@ -54,6 +55,7 @@ export function getProjects(): Project[] {
         order: data.order ?? 999,
         featured: Boolean(data.featured),
         summary_kr: data.summary_kr ?? "",
+        gallery: (data.gallery as string[] | undefined) ?? [],
         body: content,
       } satisfies Project;
     })
@@ -71,4 +73,37 @@ export function getAdjacent(slug: string) {
     prev: all[(i - 1 + all.length) % all.length],
     next: all[(i + 1) % all.length],
   };
+}
+
+export type Post = {
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+  body: string;
+};
+
+const postsDir = path.join(process.cwd(), "content", "posts");
+
+export function getPosts(): Post[] {
+  if (!fs.existsSync(postsDir)) return [];
+  return fs
+    .readdirSync(postsDir)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((file) => {
+      const { data, content } = matter(fs.readFileSync(path.join(postsDir, file), "utf8"));
+      const date = data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date);
+      return {
+        slug: data.slug ?? file.replace(/\.mdx$/, ""),
+        title: data.title,
+        date,
+        summary: data.summary ?? "",
+        body: content,
+      } satisfies Post;
+    })
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getPost(slug: string) {
+  return getPosts().find((p) => p.slug === slug);
 }
