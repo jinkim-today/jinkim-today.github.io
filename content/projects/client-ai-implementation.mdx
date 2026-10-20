@@ -5,7 +5,7 @@ year: 2026
 role: "AI implementation lead"
 org: "SDI Creative Technologies"
 status: "Client production"
-cover: "/images/projects/client-ai-implementation/cover.svg"
+cover: "/images/projects/client-ai-implementation/cover.webp"
 accent: "#0B0B0F"
 headline: "Public-tender research and deck **1-2 days to 2-3 hours**; reels and blog **2-3 days to 1-2 hours**"
 stats:
@@ -16,26 +16,33 @@ stats:
 tags: ["LangGraph", "Claude Code", "Automation"]
 order: 3
 featured: true
-summary_kr: "SDI 고객사 3곳(교육, 이벤트, 신용평가 업종)의 AI 구현을 이끌었습니다. 공공입찰 조사와 제안서 초안은 건당 1~2일에서 2~3시간으로, 릴스와 블로그 제작은 2~3일에서 1~2시간으로 줄였고, 고객 팀에 Claude Code 사용법도 교육했습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "SDI 고객사 3곳(교육, 이벤트, 신용평가 업종)의 AI 구현을 이끌었습니다. 공공입찰 조사와 제안서 초안은 건당 1~2일에서 2~3시간으로, 릴스와 블로그 제작은 2~3일에서 1~2시간으로 줄였습니다. 여러 출처의 대용량 데이터를 시각 목록으로 정리하는 작업도 맡았습니다. 각 고객 팀에 Claude Code 사용법을 교육해 직접 확장할 수 있게 했습니다."
+gallery: []
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+Three client teams did repetitive knowledge work by hand. An education agency made social and blog content one piece at a time. An event agency researched each public tender and built the bid deck from scratch. A credit rating agency sifted through large volumes of data from several sources.
 
 ## What I built
 
-Case study coming soon.
+I lead AI implementation for all **3** companies. For the education agency, I automated the content workflow across YouTube, Instagram, Facebook, and the blog. For the event agency, I built a pipeline on LangGraph over their own knowledge base that screens new public-tender postings and drafts the proposal deck. For the credit rating agency, I built a pipeline that pulls data from many sources and lays it out as visual lists. I also trained each team on Claude Code so they can extend the automations themselves.
 
 ## Architecture
 
-Case study coming soon.
+Each client gets its own knowledge base, so nothing is shared between companies. LangGraph workers read that knowledge, do the research or analysis step by step, and produce the output the team needs: a post, a deck, or a list. Claude Code skills give staff a simple way to adjust the workers.
+
+```
+Per-client knowledge base → LangGraph workers → posts, bid decks, visual lists → Claude Code skills for the team
+```
 
 ## Result
 
-Case study coming soon.
+- Reels and blog production: **2-3 days to 1-2 hours**
+- Bid research and deck per tender: **1-2 days to 2-3 hours**
+- **3** client teams trained to extend the automations on their own
 
 ## Next
 
-Case study coming soon.
+Build a shared scoring rubric so generated decks are reviewed the same way each time.

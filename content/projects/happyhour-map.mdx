@@ -2,11 +2,11 @@
 title: "HappyHour Map"
 slug: happyhour-map
 year: 2025
-role: "Solo builder"
+role: "Solo fullstack"
 org: "Personal"
 status: "Live"
 link: "https://happyhourmap.app"
-cover: "/images/projects/happyhour-map/cover.svg"
+cover: "/images/projects/happyhour-map/cover.webp"
 accent: "#0F6B45"
 headline: "Live web app; real-time filter by time, distance, cuisine, and deal"
 stats:
@@ -15,26 +15,36 @@ stats:
 tags: ["Next.js", "Maps", "Full-stack"]
 order: 7
 featured: false
-summary_kr: "밴쿠버 해피아워 할인을 찾는 개인 풀스택 웹앱. 시간, 거리, 음식 종류, 할인 조건으로 실시간 필터링할 수 있고 현재 운영 중입니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "밴쿠버 해피아워 할인을 찾는 개인 풀스택 웹앱입니다. 시간, 거리, 음식 종류, 할인 조건으로 실시간 필터링할 수 있고 현재 운영 중입니다. AI로 웹의 해피아워 정보를 모아 정리하는 수집 파이프라인으로 수작업 입력을 85% 이상 줄였습니다."
+gallery:
+  - /images/projects/happyhour-map/01.webp
+  - /images/projects/happyhour-map/02.webp
+  - /images/projects/happyhour-map/03.webp
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+Happy hour deals are popular but scattered across many restaurant sites and social accounts. Diners have to hunt for them, and small restaurants have few ways to promote the deals that fill their quiet hours.
 
 ## What I built
 
-Case study coming soon.
+I built HappyHour Map, a live web app that shows nearby deals and filters them in real time by time, distance, cuisine, and deal type. It is a responsive React and TypeScript front end with a Node.js backend, and it uses the Google Maps API for location. To fill it with data, I wrote a collection pipeline in Python that scrapes the web and uses a local AI model on LangChain to pull out the deal details and standardize them. This cut manual data entry by over **85%**.
 
 ## Architecture
 
-Case study coming soon.
+Pages are rendered on the server for the first load, which helps search engines find them, then the browser takes over for filtering. The data pipeline runs separately and writes cleaned deals into the database that the app reads.
+
+```
+Python scraper → local LLM extraction → database → Node.js API → React app with Maps
+```
 
 ## Result
 
-Case study coming soon.
+- **4** live filters: time, distance, cuisine, deal
+- Manual data entry cut by over **85%**
+- SEO metrics up **45%**, with load times under **2** seconds
 
 ## Next
 
-Case study coming soon.
+Add restaurant-submitted deals and alerts for saved neighborhoods.

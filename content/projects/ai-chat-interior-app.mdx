@@ -1,11 +1,11 @@
 ---
 title: "Button app to AI chat app"
 slug: ai-chat-interior-app
-year: 2025
-role: "Fullstack + AI engineer"
+year: 2026
+role: "Fullstack & AI engineer (sole builder)"
 org: "SDI Creative Technologies"
 status: "Live"
-cover: "/images/projects/ai-chat-interior-app/cover.svg"
+cover: "/images/projects/ai-chat-interior-app/cover.webp"
 accent: "#0F6B45"
 headline: "LangGraph + **40,000+ product** catalog; chat became the main way users use the product"
 stats:
@@ -16,26 +16,33 @@ stats:
 tags: ["LangGraph", "Neo4j", "GraphRAG"]
 order: 2
 featured: true
-summary_kr: "버튼 기반 B2C 인테리어 앱을 대화형 AI 앱으로 전환하는 일을 제안하고 구축했습니다. LangGraph 에이전트, 4만+ 노드 지식그래프 기반 GraphRAG 추천, 4만+ 제품 카탈로그를 연결했고, 채팅이 제품의 주된 사용 방식이 되었습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "버튼 기반 B2C 인테리어 앱을 대화형 AI 앱으로 전환하는 일을 제안하고 구축했습니다. LangGraph 에이전트와 4만+ 노드 지식그래프 기반 GraphRAG 추천, 4만+ 제품 카탈로그를 연결했습니다. 31개 디자인 컨셉을 분류하는 퀴즈로 방을 새로 꾸민 이미지를 만들어 줍니다. 채팅이 제품의 주된 사용 방식이 되었고 기존 화면은 내려갔습니다."
+gallery: []
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+The interior-design app guided users through fixed buttons, one step at a time. People could not ask what they actually wanted, and the app could not use what it already knew about their taste.
 
 ## What I built
 
-Case study coming soon.
+I proposed replacing the button flow with an AI chat and led the build. It runs on LangGraph, which manages the conversation, the tools the AI can call, and what it remembers. Claude handles the conversation and Gemini generates room images, and I tested and debugged the agent with LangSmith. A quiz sorts each user into one of **31** design concepts, then the app renders a makeover of their room and recommends real furniture from a catalog of **40,000+** products. Behind this sits a knowledge graph of **40,000+** nodes on Neo4j that links each concept to materials, colors, and product traits.
 
 ## Architecture
 
-Case study coming soon.
+The chat agent decides which tool to call: the quiz, the recommender, or the image generator. Recommendations use GraphRAG, meaning the agent walks the knowledge graph to find what fits a concept and budget, then writes a detailed image prompt from the result. A scraping pipeline keeps the product catalog fresh.
+
+```
+Flask API → LangGraph agent → Claude + Gemini → Neo4j knowledge graph (GraphRAG) → product catalog
+```
 
 ## Result
 
-Case study coming soon.
+- Chat became the main way users use the product, and the old button interface was retired
+- Knowledge graph of **40,000+** nodes covering **31** design concepts
+- Recommendations drawn from a catalog of **40,000+** products
 
 ## Next
 
-Case study coming soon.
+Add latency and cost dashboards for each tool call the agent makes.

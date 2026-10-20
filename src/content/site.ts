@@ -50,6 +50,84 @@ export const aboutSummary = [
   "I work best close to the people who use the software.",
 ];
 
+export const about = {
+  metaDescription:
+    "About Jin Kim: forward-deployed and AI engineer in Seongnam and Vancouver. Founder, consultant, and sole engineer who builds software next to the people who use it.",
+  title: "About",
+  intro: [
+    "I am a forward-deployed engineer. I work directly with client companies, find the real problem behind their manual work, and build the software and AI systems that fix it, from factory floors to office and marketing teams.",
+    "I have done this as a founder, a consultant, and the sole engineer on small teams. I built and sold a photography business, built a factory system that cut an office team from 3 people to 1 manager, and now lead AI work for client companies at SDI.",
+    "I work best close to the people who use the software. I go on-site, build the smallest working version fast, and train the team to run it without me.",
+  ],
+  timelineTitle: "Where I have worked",
+  timeline: [
+    {
+      org: "SDI Creative Technologies",
+      role: "AI & Forward Deployed Engineer",
+      when: "Jan 2026 - Present",
+      line: "Built 2 AI apps from scratch, led AI work for 3 client companies, and put AI to work inside the company.",
+    },
+    {
+      org: "IntelliWorks",
+      role: "Founder",
+      when: "Jun 2025 - Present",
+      line: "An AI consultancy that signed 2 client factories and cut one factory's office team from 3 people to 1 manager.",
+    },
+    {
+      org: "Dialpad",
+      role: "Software Engineer, Co-op",
+      when: "Jan 2025 - Jan 2026",
+      line: "Built a C++ tool that tests phone calls automatically and used it to catch a critical bug before customers did.",
+    },
+    {
+      org: "Photobyme (acquired)",
+      role: "Founder",
+      when: "Apr 2022 - Jan 2026",
+      line: "Ran 300+ events and 3,000+ sessions, grew to $8-10K monthly revenue with a 10-person part-time team, then sold it.",
+    },
+    {
+      org: "Computrol Systems",
+      role: "Junior Developer, Co-op",
+      when: "Jan 2024 - Dec 2024",
+      line: "Built firmware, a management web app, and deployments for fuel and water control systems, cutting setup time 80%.",
+    },
+    {
+      org: "Intersystem Controls",
+      role: "Full-stack Developer, Co-op",
+      when: "Jan 2023 - Sep 2023",
+      line: "Automated license key creation end to end and built a stock tracking system that cut manual tracking time 75%.",
+    },
+    {
+      org: "Simon Fraser University",
+      role: "Bachelor of Computer Science",
+      when: "Sep 2020 - Oct 2025",
+      line: "Computer science degree in Burnaby, BC.",
+    },
+  ],
+  nowTitle: "Now",
+  now: "Based in Seongnam, South Korea until early 2027, then back to Vancouver. Open to forward-deployed engineer and AI engineer roles.",
+  skillsTitle: "Skills",
+  skills: [
+    { group: "Programming languages", items: "Python, TypeScript, JavaScript, C++, SQL" },
+    {
+      group: "AI and machine learning",
+      items: "LangGraph, LangChain, GraphRAG, RAG, Claude API, Gemini API, PyTorch",
+    },
+    {
+      group: "Web and mobile",
+      items: "Next.js, React, React Native, Node.js, FastAPI, Flask, PostgreSQL, Supabase",
+    },
+    {
+      group: "Cloud and DevOps",
+      items: "AWS (EC2, S3), Docker, GitHub Actions, Vercel, CI/CD, Linux, Sentry",
+    },
+  ],
+  resumeLabel: "Resume (PDF)",
+  emailLabel: "Email",
+  linkedinLabel: "LinkedIn",
+  githubLabel: "GitHub",
+};
+
 // Hero typewriter timing.
 export const typewriter = {
   msPerChar: 35,

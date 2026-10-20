@@ -2,10 +2,10 @@
 title: "Hermes: multi-agent Slack platform"
 slug: hermes-slack-agents
 year: 2026
-role: "AI engineer"
+role: "AI implementation lead"
 org: "SDI Creative Technologies (internal)"
 status: "Live"
-cover: "/images/projects/hermes-slack-agents/cover.svg"
+cover: "/images/projects/hermes-slack-agents/cover.webp"
 accent: "#0A1FFF"
 headline: "**2-3 hours saved per person daily**; onboarding 1:1 **2-3 hours to 30 minutes**"
 stats:
@@ -16,26 +16,34 @@ stats:
 tags: ["Slack", "Claude Code", "Agents"]
 order: 4
 featured: false
-summary_kr: "SDI 사내 멀티에이전트 Slack 플랫폼. 에이전트가 버그 수정, 일일 리포트 게시, 데이터 질의 응답, 신입 온보딩을 맡습니다. 1인당 하루 2~3시간을 절약했고 온보딩 1:1은 2~3시간에서 30분으로 줄었습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "SDI 사내 멀티에이전트 Slack 플랫폼입니다. 에이전트가 버그를 고치고, 일일 데이터와 마케팅 리포트를 올리고, 비개발 직원의 데이터 질문에 답하며, 신입 온보딩 챗봇 역할도 합니다. 마케팅, 디자인, PM 팀에는 팀별 Claude Code 서브에이전트와 스킬을 배포하고 교육했습니다. 1인당 하루 2~3시간을 절약했고 온보딩 1:1은 2~3시간에서 30분으로 줄었습니다."
+gallery: []
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+Reports were pulled by hand from separate tools, onboarding new hires took senior staff hours of one-on-one time, and non-engineers had no easy way to ask the company's data a question.
 
 ## What I built
 
-Case study coming soon.
+I built Hermes, a Slack platform where AI agents do this work in the channels people already use. Agents fix bugs, post daily marketing and data reports, and answer office staff. A chatbot takes newcomers' questions. I also set up Claude Code subagents and skills for each team and trained them. Marketing got an ad pipeline from research to posting. Design got AI design tools. Product managers got a pipeline that turns a feature idea into clarifying questions, a branch, a tech spec, and GitHub issues. Automated deploys, error alerts, and daily tests run on GitHub Actions, Sentry, and Slack.
 
 ## Architecture
 
-Case study coming soon.
+A message in Slack goes to a router that picks the right agent for the job: bug fix, report, or question. Each agent reaches the code repositories, data, and Slack through its own limited access, then replies in the thread. Team skills sit beside it so each department can tune its own workflow.
+
+```
+Slack → agent router → task agents (bug fix, report, Q&A) → repos, data, Slack replies
+```
 
 ## Result
 
-Case study coming soon.
+- **2-3 hours** saved per person daily
+- Ad production: **2-3 days to half a day**
+- 1:1 onboarding: **2-3 hours to 30 minutes**
+- Production issues caught: **2-3 per week** before users reported them
 
 ## Next
 
-Case study coming soon.
+Turn agent run logs into a weekly review of cost and answer quality.

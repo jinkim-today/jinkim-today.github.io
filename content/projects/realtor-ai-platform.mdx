@@ -2,10 +2,10 @@
 title: "B2B AI platform for realtors"
 slug: realtor-ai-platform
 year: 2026
-role: "Sole fullstack + AI engineer"
+role: "Fullstack & AI engineer (sole builder)"
 org: "SDI Creative Technologies"
 status: "Client production"
-cover: "/images/projects/realtor-ai-platform/cover.svg"
+cover: "/images/projects/realtor-ai-platform/cover.webp"
 accent: "#0A1FFF"
 headline: "Shipped in **1 week**; **11 investor inquiries at one conference, up from 2**"
 stats:
@@ -16,26 +16,33 @@ stats:
 tags: ["Next.js", "FastAPI", "RAG"]
 order: 1
 featured: true
-summary_kr: "부동산 중개인용 B2B AI 플랫폼. 기존 B2C 인테리어 앱 위에 B2B 전환을 제안하고 1주 만에 혼자 설계·구축했습니다. 고객·매물 관리, RAG 챗봇, 자동 리포트, 스테이징 분석을 포함하며, 한 컨퍼런스에서 투자 문의가 2건에서 11건으로 늘었습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "부동산 중개인용 B2B AI 플랫폼입니다. 기존 B2C 인테리어 앱 위에 B2B 전환을 제안하고 1주 만에 혼자 설계하고 구축했습니다. 고객과 매물 관리, RAG 챗봇, 자동 리포트, 스테이징 분석, 현장용 모바일 페이지를 담았습니다. 한 컨퍼런스에서 투자 문의가 2건에서 11건으로 늘었습니다."
+gallery: []
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+The company's consumer interior-design app had users but little investor interest. Realtors kept asking for the same AI staging and research tools, but wrapped in a workflow built around their clients and listings, not around one-off room makeovers.
 
 ## What I built
 
-Case study coming soon.
+I proposed the pivot to realtors and built the platform alone in **1 week**. It runs on Next.js, FastAPI, and PostgreSQL. Realtors manage clients and properties in one place and chat with an AI assistant that answers from listing data, client context, web research, and PDFs they upload. The app writes buyer and seller reports as PDF or a shareable web page with the realtor's own branding, and checks listing photos and descriptions against National Association of Realtors staging guidance. A mobile page serves showings, and a workflow dashboard chains research, staging posts, and reports into **1 click**. A Chrome extension carries the user's data onto other platforms.
 
 ## Architecture
 
-Case study coming soon.
+The web app talks to one FastAPI backend. Listing and client data live in PostgreSQL on Supabase, where pgvector powers search over text chunks embedded with Gemini. LangGraph runs the assistant, and a renderer turns report data into PDF and HTML. The Chrome extension calls the same API.
+
+```
+Next.js app → FastAPI → PostgreSQL (pgvector) → Gemini embeddings → LangGraph assistant → PDF / HTML reports
+```
 
 ## Result
 
-Case study coming soon.
+- MVP live in **1 week**, built solo
+- **11** investor inquiries at one startup conference, up from **2** for the consumer product
+- One of **2** B2B AI apps I build and maintain
 
 ## Next
 
-Case study coming soon.
+Add an evaluation set that scores the assistant's answers, and usage analytics per workflow.

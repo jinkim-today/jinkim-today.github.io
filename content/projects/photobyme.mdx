@@ -6,7 +6,7 @@ role: "Founder"
 org: "Photobyme (my studio)"
 status: "Acquired"
 link: "https://photobyme.ca"
-cover: "/images/projects/photobyme/cover.svg"
+cover: "/images/projects/photobyme/cover.webp"
 accent: "#0A1FFF"
 headline: "**3,000+ sessions**, **300+ events**, **$8-10K MRR**, sold"
 stats:
@@ -17,26 +17,35 @@ stats:
 tags: ["Web app", "Payments", "Hardware"]
 order: 6
 featured: true
-summary_kr: "서부 캐나다 첫 셀프 포트레이트 스튜디오(2022). 사진가 없이 예약, 결제, 세션이 자동으로 돌아가는 웹을 혼자 만들었고 직접 만든 포토부스로 행사 300회 이상을 진행했습니다. 3,000회 이상의 세션, 월 매출 $8-10K, 파트타임 10명 운영 후 매각했습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "서부 캐나다 첫 셀프 포트레이트 스튜디오(2022)입니다. 사진가 없이 예약, 결제, 세션이 자동으로 돌아가는 웹을 혼자 만들었고, 직접 만든 포토부스로 행사 300회 이상을 진행했습니다. 3,000회 이상의 세션, 월 매출 $8-10K, 파트타임 10명 운영을 거쳐 사업을 매각했습니다."
+gallery:
+  - /images/projects/photobyme/01.webp
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+Professional photo shoots cost too much and book out for weeks, which is overkill for people who just want good portraits. Rental photo booths were mostly plastic, clashed with wood-accented Canadian venues, and still cost a premium.
 
 ## What I built
 
-Case study coming soon.
+I launched Western Canada's first self-portrait studio in **2022**: a walk-in studio with no photographer, with sessions starting at CA$75. I built the whole booking site alone on React and Square checkout, with online booking, payment, and automated session handling. For events I designed and built wooden photo booths myself, which let us price about **30-40%** below typical rentals. An AI support chatbot, built on LangChain and a local model with RAG, cut the time spent answering customers. A team of **10** part-time staff ran sessions and events.
 
 ## Architecture
 
-Case study coming soon.
+One website handles booking, payment, and session setup, so a customer can walk in and shoot without help from staff. The booths are separate hardware that I built and set up on-site, with the same software running them.
+
+```
+React booking site → Square checkout → automated session flow → studio and wooden photo booths
+```
 
 ## Result
 
-Case study coming soon.
+- **3,000+** self-portrait sessions
+- **300+** photo booth events
+- Monthly revenue of **$8-10K**, with **10** part-time staff and no full-time photographers
+- Business sold to another operator
 
 ## Next
 
-Case study coming soon.
+The business now runs under its new owner. I would apply the same self-serve model to other service businesses.

@@ -2,10 +2,10 @@
 title: "AI ERP and photo reading for a plating factory"
 slug: intelliworks-factory-erp
 year: 2025
-role: "Founder and on-site engineer"
+role: "Founder, on-site engineer"
 org: "IntelliWorks (my consultancy)"
 status: "Client production"
-cover: "/images/projects/intelliworks-factory-erp/cover.svg"
+cover: "/images/projects/intelliworks-factory-erp/cover.webp"
 accent: "#8A3B12"
 headline: "Office team **3 to 1 manager**; **10 stations** of handwritten boards read by AI; cloud cost **-90%**"
 stats:
@@ -16,26 +16,34 @@ stats:
 tags: ["React", "Node.js", "PostgreSQL"]
 order: 5
 featured: true
-summary_kr: "직접 세운 IntelliWorks에서 20인 도금공장에 상주하며 모든 직급을 인터뷰해 품질 분쟁의 원인을 찾고 ERP를 구축했습니다. LOT 추적, 고객 실시간 조회 포털, 다국어 챗봇, 10개 스테이션 현황판 사진 판독을 포함하며, 사무 인력은 3명에서 1명으로, 클라우드 비용은 90% 줄었습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "직접 세운 IntelliWorks에서 20인 도금공장에 상주하며 모든 직급을 인터뷰해 품질 분쟁의 원인을 찾고 ERP를 구축했습니다. LOT 추적, 고객 실시간 조회 포털, 다국어 챗봇, 10개 스테이션 현황판 사진 판독을 포함합니다. 사무 인력은 3명에서 1명으로, 클라우드 비용은 90% 줄었습니다. 핵심 직원 교육으로 자립 운영이 가능하고 50인 규모의 두 번째 공장도 진행 중입니다."
+gallery: []
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+A plating factory with **20** employees ran on verbal handoffs, paper logs, and no record of what happened to each order. That led to repeated quality disputes with its **40+** business customers.
 
 ## What I built
 
-Case study coming soon.
+I went on-site, interviewed workers at every level, and found that the missing paper trail was the root cause. Then I built the factory's system on React, Node.js, and PostgreSQL. Every order is tracked by LOT through each plating step. A customer portal shows the **40+** customers live order status. A built-in chatbot lets workers ask in their own language and lets managers ask for data in plain words. Workers now photograph the handwritten status boards at **10** stations and AI reads them. Slack agents handle sales reports and month-end emails, and I trained **3** key staff to run it all without me.
 
 ## Architecture
 
-Case study coming soon.
+The app runs on AWS. Photos go to S3, an OCR step reads the numbers into the production log, and the chatbot answers from the same database. The customer portal reads from the same data, so there is one source of truth. Errors are watched with Sentry.
+
+```
+React app → Node.js API → PostgreSQL → S3 photos → AI OCR → production log → chatbot and customer portal
+```
 
 ## Result
 
-Case study coming soon.
+- Office team: **3 people to 1 manager**
+- **1+ hour** of messenger replies saved daily, plus **1 hour** of floor walking
+- Cloud cost: **-90%** after moving from Lambda to EC2
+- A second factory with **50** employees signed through my own outreach
 
 ## Next
 
-Case study coming soon.
+Build a React Native app for the factory floor. A defect detection model is in progress and not shown here.

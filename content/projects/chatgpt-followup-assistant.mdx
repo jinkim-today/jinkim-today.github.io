@@ -2,35 +2,49 @@
 title: "ChatGPT Follow-up Assistant"
 slug: chatgpt-followup-assistant
 year: 2025
-role: "Solo builder"
+role: "Solo developer"
 org: "Personal"
 status: "Published"
-cover: "/images/projects/chatgpt-followup-assistant/cover.svg"
+link: "https://chromewebstore.google.com/detail/chatgpt-follow-up-assista/lkmfpkkbjnodlanaleadcolhjelejgam"
+cover: "/images/projects/chatgpt-followup-assistant/cover.webp"
 accent: "#0B0B0F"
 headline: "Published on the Chrome Web Store"
+stats:
+  - value: "2"
+    label: "languages supported, English and Korean"
 tags: ["Chrome extension", "JavaScript", "ChatGPT"]
 order: 8
 featured: false
-summary_kr: "ChatGPT 후속 질문을 돕는 크롬 확장 프로그램. Chrome Web Store에 게시되어 있습니다."
-confidential_notes: "Placeholder cover. No source, no client data, public UI only."
+summary_kr: "ChatGPT 대화 중 떠오른 후속 질문을 놓치지 않게 모아 주는 크롬 확장 프로그램입니다. 답변에서 텍스트를 선택해 한 번에 질문으로 추가하고, 사이드 패널에서 정리한 뒤 한 번에 대화로 보낼 수 있습니다. 한국어와 영어 템플릿을 지원하고 모든 데이터는 브라우저 안에만 남습니다. 직접 쓰려고 만든 도구를 다듬어 Chrome Web Store에 게시했습니다."
+gallery:
+  - /images/projects/chatgpt-followup-assistant/01.webp
+  - /images/projects/chatgpt-followup-assistant/02.webp
+  - /images/projects/chatgpt-followup-assistant/03.webp
+confidential_notes: "No source, no client data. Public UI only."
 ---
 
 ## Problem
 
-Case study coming soon.
+When I studied with ChatGPT, long answers raised questions that I forgot by the time I finished reading. Typing them later, without the original context, made the conversation scattered.
 
 ## What I built
 
-Case study coming soon.
+I built a Chrome extension that captures those questions as they come up. Select any text in an answer and add it as a follow-up with **1 click**. The questions collect in a side panel where you can review, edit, reorder, and delete them. When you are ready, one click sends the whole list back into the conversation. It has English and Korean templates, and everything stays in the browser with no outside server. I built it for myself, then polished and published it.
 
 ## Architecture
 
-Case study coming soon.
+The extension is plain JavaScript, HTML, and CSS. It reads the ChatGPT page, watches for changes as answers stream in, and adds its own panel styled to match. Questions are saved with the Chrome storage feature, so nothing leaves the user's computer.
+
+```
+Chrome extension → page observer → side panel UI → Chrome storage → export back into the chat
+```
 
 ## Result
 
-Case study coming soon.
+- Published on the Chrome Web Store
+- **2** languages supported, English and Korean
+- **0** external servers, all data stays in the browser
 
 ## Next
 
-Case study coming soon.
+Add shareable question lists and support for other AI chat sites.
