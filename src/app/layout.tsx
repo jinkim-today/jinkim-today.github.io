@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script id="theme-init" strategy="beforeInteractive">{themeScript}</Script>
       </head>
       <body className="flex min-h-screen flex-col">
         <Nav />
