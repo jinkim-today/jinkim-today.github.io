@@ -51,7 +51,7 @@
   --color-line: var(--line);
   --color-muted: var(--muted);
   --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-inter), system-ui, sans-serif;
 }
 
 html {
@@ -85,23 +85,34 @@ body {
 }
 @media (min-width: 768px) {
   .gutter {
+    padding-inline: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .gutter {
     padding-inline: 32px;
   }
 }
 .wrap {
   margin-inline: auto;
   width: 100%;
-  max-width: 80rem;
+  max-width: 1920px;
 }
 
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.numeral {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 .h1-hero {
-  font-size: clamp(2.5rem, 7.2vw, 8rem);
+  font-size: clamp(3rem, 7.2vw, 7.5rem);
 }
 .h2-section {
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -143,7 +154,7 @@ body {
 /* Case study body */
 .case-body h2 {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
   font-size: clamp(1.75rem, 4vw, 2.5rem);

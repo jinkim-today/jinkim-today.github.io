@@ -12,7 +12,7 @@ export function Tags({
 }) {
   return (
     <span
-      className={`label ${tone === "onBlue" ? "text-cream/80" : "text-muted"}`}
+      className={`label ${tone === "onBlue" ? "text-cream/70" : "text-muted"}`}
     >
       {items.join(" · ")}
     </span>
@@ -30,7 +30,7 @@ export function Status({
   return (
     <span
       className={`label inline-flex items-center gap-2 ${
-        tone === "onBlue" ? "text-cream/80" : "text-muted"
+        tone === "onBlue" ? "text-cream/70" : "text-muted"
       }`}
     >
       <span

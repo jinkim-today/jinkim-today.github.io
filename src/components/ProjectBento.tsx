@@ -51,6 +51,7 @@ export function ProjectBento({
 }) {
   const horizontal = size === "feature" || size === "full";
   const rich = size !== "small";
+  const isBlue = project.accent.toLowerCase() === "#0a1fff";
   const num = String(index + 1).padStart(2, "0");
 
   const layout = horizontal
@@ -83,11 +84,11 @@ export function ProjectBento({
       <Link
         href={`/projects/${project.slug}/`}
         style={{ "--accent": project.accent } as React.CSSProperties}
-        className={`group flex h-full flex-col overflow-hidden rounded-lg bg-card ${layout}`}
+        className={`group flex h-full flex-col overflow-hidden rounded-lg bg-[#1A30FF] text-cream ${layout}`}
       >
         <div
           className={`relative overflow-hidden ${coverBox}`}
-          style={{ backgroundColor: project.accent }}
+          style={{ backgroundColor: isBlue ? "#F3EEE3" : project.accent }}
         >
           <Image
             src={project.cover}
@@ -98,7 +99,7 @@ export function ProjectBento({
           />
           <span
             aria-hidden
-            className={`display pointer-events-none absolute left-4 top-3 leading-none text-cream/90 ${numeral}`}
+            className={`numeral pointer-events-none absolute left-4 top-3 ${isBlue ? "text-ink/80" : "text-cream/90"} ${numeral}`}
           >
             {num}
           </span>
@@ -111,20 +112,20 @@ export function ProjectBento({
         >
           <div className="min-w-0">
             <div className="flex items-center justify-between gap-3">
-              <span className="label text-muted">
+              <span className="label text-cream/70">
                 {num} · {project.year}
               </span>
               {rich && (
-                <Status>{project.status}</Status>
+                <Status tone="onBlue">{project.status}</Status>
               )}
             </div>
             <h3
-              className={`mt-3 font-display underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current group-focus-visible:decoration-current font-extrabold leading-tight tracking-tight ${title}`}
+              className={`mt-3 font-display underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current group-focus-visible:decoration-current font-medium leading-tight tracking-tight ${title}`}
             >
               {project.title}
             </h3>
             <p
-              className={`mt-3 text-base text-muted ${
+              className={`mt-3 text-base text-cream/70 ${
                 rich ? (size === "full" ? "lg:line-clamp-2" : "") : "truncate"
               }`}
             >
@@ -132,7 +133,7 @@ export function ProjectBento({
             </p>
           </div>
           <div className="mt-5 flex items-end justify-between gap-3">
-            <Tags items={project.tags.slice(0, rich ? 3 : 2)} />
+            <Tags tone="onBlue" items={project.tags.slice(0, rich ? 3 : 2)} />
             <Arrow />
           </div>
         </div>

@@ -82,7 +82,7 @@ export default function Home() {
                   className="aspect-[16/10] w-full object-cover"
                 />
                 <span className="absolute inset-x-0 bottom-0 translate-y-full bg-cream p-3 text-sm text-ink transition-transform duration-200 group-hover:translate-y-0 group-focus-visible:translate-y-0">
-                  <strong className="block font-display text-base font-extrabold">{p.title}</strong>
+                  <strong className="block font-display text-base font-medium">{p.title}</strong>
                   <Headline text={p.headline} />
                 </span>
               </Link>
@@ -91,19 +91,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="bg-bg">
-        <div className="wrap gutter py-20 md:py-28">
+      <section id="projects" className="bg-blue text-cream">
+        <div className="wrap gutter pb-20 pt-6 md:pb-28 md:pt-10">
           <Reveal>
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="label text-muted">Selected work</p>
+                <p className="label text-cream/70">Selected work</p>
                 <h2 className="display h2-section mt-3">All projects</h2>
               </div>
-              <p className="label shrink-0 text-muted">{projects.length} projects</p>
+              <p className="label shrink-0 text-cream/70">{projects.length} projects</p>
             </div>
-            <p className="mt-4 max-w-2xl text-muted">{projectsSubline}</p>
+            <p className="mt-4 max-w-2xl text-cream/70">{projectsSubline}</p>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+          <div className="mt-12 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-12">
             {projects.map((p, i) => (
               <ProjectBento
                 key={p.slug}
@@ -125,8 +125,8 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
             {howIWork.map((s, i) => (
               <Reveal key={s.step} delay={i * 0.08} >
-                <p className="label text-muted">{s.step}</p>
-                <h3 className="display mt-4 text-3xl">{s.title}</h3>
+                <p className="numeral text-[clamp(4rem,8vw,7rem)]">{s.step}</p>
+                <h3 className="display mt-6 text-3xl">{s.title}</h3>
                 <p className="mt-4 text-base text-muted">{s.body}</p>
               </Reveal>
             ))}

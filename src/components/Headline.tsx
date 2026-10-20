@@ -5,7 +5,7 @@ export function Headline({ text }: { text: string }) {
   return (
     <>
       {text.split("**").map((part, i) =>
-        i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : <Fragment key={i}>{part}</Fragment>,
+        i % 2 === 1 ? <strong key={i} className="font-semibold">{part}</strong> : <Fragment key={i}>{part}</Fragment>,
       )}
     </>
   );
