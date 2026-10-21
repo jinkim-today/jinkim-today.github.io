@@ -3,6 +3,8 @@ import { Hero } from "@/components/home/Hero";
 import { ProofRow } from "@/components/home/ProofRow";
 import { ProjectList } from "@/components/home/ProjectList";
 import { Writing } from "@/components/home/Writing";
+import { Experience } from "@/components/home/Experience";
+import { Education } from "@/components/home/Education";
 import { Contact } from "@/components/home/Contact";
 import { contact, siteDescription, siteTitle, siteUrl } from "@/content/site";
 import { getPosts, getProjects } from "@/lib/content";
@@ -37,6 +39,8 @@ export default function Home() {
         <ProofRow />
         <ProjectList projects={projects} />
         <Writing posts={latest} />
+        <Experience />
+        <Education />
         <Contact />
       </div>
     </>
