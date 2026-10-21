@@ -80,6 +80,9 @@ export type Post = {
   title: string;
   date: string;
   summary: string;
+  summary_kr: string;
+  tags: string[];
+  draft: boolean;
   body: string;
 };
 
@@ -98,12 +101,25 @@ export function getPosts(): Post[] {
         title: data.title,
         date,
         summary: data.summary ?? "",
+        summary_kr: data.summary_kr ?? "",
+        tags: data.tags ?? [],
+        draft: data.draft === true,
         body: content,
       } satisfies Post;
     })
+    .filter((p) => !p.draft)
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export function getPost(slug: string) {
   return getPosts().find((p) => p.slug === slug);
+}
+
+export function getAdjacentPost(slug: string) {
+  const all = getPosts();
+  const i = all.findIndex((p) => p.slug === slug);
+  return {
+    prev: i > 0 ? all[i - 1] : undefined,
+    next: i < all.length - 1 ? all[i + 1] : undefined,
+  };
 }

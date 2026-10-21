@@ -43,6 +43,7 @@ export function Nav() {
         <div className="flex items-center gap-3 font-mono text-sm sm:gap-5 sm:text-base">
           <Link href="/about/" className={link}>About</Link>
           <Link href="/#projects" className={link}>Projects</Link>
+          <Link href="/#writing" className={link}>Writing</Link>
           <a
             href={contact.resume}
             className={`${link} max-[420px]:hidden`}

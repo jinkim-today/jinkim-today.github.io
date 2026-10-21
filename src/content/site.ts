@@ -15,6 +15,8 @@ export const heroSubline =
 export const projectsSubline =
   "Everything I have shipped, on-site and in production.";
 
+export const writingSubline = "Notes from building software where the work happens.";
+
 export const footerTitle = "Let's build something.";
 
 export const contact = {

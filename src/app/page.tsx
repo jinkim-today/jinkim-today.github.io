@@ -16,8 +16,10 @@ import {
   siteDescription,
   siteTitle,
   siteUrl,
+  writingSubline,
 } from "@/content/site";
-import { getProjects } from "@/lib/content";
+import { PostItem } from "@/components/PostItem";
+import { getPosts, getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: { absolute: `${siteTitle} | Forward-deployed & AI engineer` },
@@ -27,6 +29,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const projects = getProjects();
+  const posts = getPosts();
+  const latest = posts.slice(0, 3);
   const featured = projects.filter((p) => p.featured).slice(0, 5);
 
   const personLd = {
@@ -106,6 +110,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {posts.length >= 2 && (
+        <section id="writing" className="bg-bg">
+          <div className="wrap gutter py-20 md:py-28">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <Reveal y={24}>
+                  <p className="label text-muted">{"// "}Writing</p>
+                </Reveal>
+                <Reveal y={24} delay={0.08}>
+                  <h2 className="display h2-section mt-3">Writing</h2>
+                </Reveal>
+              </div>
+              <Reveal y={0} delay={0.3} className="shrink-0">
+                <p className="label text-muted">
+                  [{posts.length} {posts.length === 1 ? "article" : "articles"}]
+                </p>
+              </Reveal>
+            </div>
+            <Reveal y={16} delay={0.16}>
+              <p className="mt-4 max-w-2xl text-muted">{writingSubline}</p>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 gap-1 md:grid-cols-3">
+              {latest.map((p, i) => (
+                <Reveal key={p.slug} delay={i * 0.1} y={32} duration={0.5} className="min-w-0">
+                  <PostItem post={p} />
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-10">
+              <TextLink href="/blog/">All articles</TextLink>
+            </p>
+          </div>
+        </section>
+      )}
 
       <section className="bg-band">
         <div className="wrap gutter py-20 md:py-28">

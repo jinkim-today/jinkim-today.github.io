@@ -1,32 +1,43 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { PostItem } from "@/components/PostItem";
+import { Reveal } from "@/components/ui/Reveal";
+import { writingSubline } from "@/content/site";
 import { getPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Writing",
+  description: writingSubline,
   alternates: { canonical: "/blog/" },
-  robots: { index: false },
 };
 
 export default function BlogIndex() {
   const posts = getPosts();
   return (
-    <div className="wrap gutter pb-20 pt-32 md:pb-28 md:pt-40">
-      <p className="label text-muted">Blog</p>
-      <h1 className="display h2-section mt-3">Notes</h1>
-      <ul className="mt-12 max-w-3xl space-y-8">
-        {posts.map((p) => (
-          <li key={p.slug}>
-            <Link href={`/blog/${p.slug}/`} className="group block">
-              <span className="label text-muted">{p.date}</span>
-              <span className="display mt-1 block text-2xl underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current md:text-3xl">
-                {p.title}
-              </span>
-              {p.summary && <span className="mt-2 block text-muted">{p.summary}</span>}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <header className="bg-blue text-cream">
+        <div className="wrap gutter pb-14 pt-32 md:pb-20 md:pt-40">
+          <Reveal onMount>
+            <p className="label text-cream/70">{"// "}Writing</p>
+          </Reveal>
+          <Reveal onMount delay={0.08} y={24}>
+            <h1 className="display mt-3 text-[clamp(2.5rem,7vw,6rem)]">Writing</h1>
+          </Reveal>
+          <Reveal onMount delay={0.16} y={16}>
+            <p className="mt-6 max-w-2xl text-cream/70">{writingSubline}</p>
+          </Reveal>
+        </div>
+      </header>
+      <div className="wrap gutter py-14 md:py-20">
+        <ul className="grid grid-cols-1 gap-1">
+          {posts.map((p, i) => (
+            <li key={p.slug}>
+              <Reveal delay={i * 0.06} y={24}>
+                <PostItem post={p} />
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
