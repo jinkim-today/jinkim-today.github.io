@@ -23,9 +23,9 @@ function Arrow() {
   return (
     <span
       aria-hidden
-      className="inline-block text-xl transition-transform duration-200 ease-out group-hover:translate-x-1.5"
+      className="inline-block font-mono text-lg transition-transform duration-200 ease-out group-hover:translate-x-1.5"
     >
-      →
+      -&gt;
     </span>
   );
 }
@@ -45,7 +45,7 @@ function Stat({
           big ? "text-[clamp(2.75rem,5vw,5.5rem)]" : "text-[clamp(2rem,3.5vw,3.25rem)]"
         }`}
       />
-      <p className="mt-2 max-w-[22ch] text-[0.8rem] leading-snug text-cream/70">
+      <p className="mt-2 max-w-[22ch] font-mono text-[0.75rem] leading-snug opacity-70">
         {stat.label}
       </p>
     </div>
@@ -141,21 +141,21 @@ export function ProjectBento({
         </div>
 
         <div
-          className={`flex min-w-0 flex-1 flex-col p-5 md:p-6 ${
+          className={`flex min-w-0 flex-1 flex-col p-5 transition-colors duration-150 group-hover:bg-cream group-hover:text-blue group-focus-visible:bg-cream group-focus-visible:text-blue md:p-6 ${
             size === "feature" ? "lg:p-10" : ""
           } ${size === "full" ? "justify-center lg:px-8" : "justify-between"}`}
         >
           <div className="min-w-0">
             <div className="flex items-center justify-between gap-3">
-              <span className="label text-cream/70">
-                {num} · {project.year}
+              <span className="label opacity-70">
+                [{num}] {project.year}
               </span>
               {rich && (
                 <Status tone="onBlue">{project.status}</Status>
               )}
             </div>
             <h3
-              className={`mt-3 font-display underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current group-focus-visible:decoration-current font-medium leading-tight tracking-tight ${title}`}
+              className={`mt-3 font-display font-medium leading-tight tracking-tight ${title}`}
             >
               {project.title}
             </h3>
@@ -165,7 +165,7 @@ export function ProjectBento({
               </div>
             ) : (
               <p
-                className={`mt-3 text-cream/70 ${
+                className={`mt-3 opacity-70 ${
                   bigStat && hasStats ? "text-[0.95rem]" : "text-base"
                 } ${size === "full" ? "lg:line-clamp-2" : ""} ${
                   size === "small" ? "truncate" : ""

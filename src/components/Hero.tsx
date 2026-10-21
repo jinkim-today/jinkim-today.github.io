@@ -16,7 +16,6 @@ export function Hero() {
   // null = not started (SSR / no-JS / reduced motion): full text shown as plain H1 text.
   const [count, setCount] = useState<number | null>(null);
   const [done, setDone] = useState(true);
-  const [caret, setCaret] = useState(false);
 
   useLayoutEffect(() => {
     if (reduce) return;
@@ -27,7 +26,6 @@ export function Hero() {
     /* eslint-disable react-hooks/set-state-in-effect */
     setCount(0);
     setDone(false);
-    setCaret(true);
     /* eslint-enable react-hooks/set-state-in-effect */
     const tick = () => {
       const n = Math.min(
@@ -42,10 +40,6 @@ export function Hero() {
       const typedMs = total * typewriter.msPerChar;
       timers.push(
         setTimeout(() => setDone(true), Math.max(0, typewriter.minRevealMs - typedMs)),
-        setTimeout(
-          () => setCaret(false),
-          typewriter.caretBlinkMs * typewriter.caretBlinks,
-        ),
       );
     };
     raf = requestAnimationFrame(tick);
@@ -70,17 +64,17 @@ export function Hero() {
   return (
     <>
       <p className="label text-cream/80">{badgeText}</p>
-      <h1 className="display h1-hero relative mt-8 max-w-[18ch]">
+      <h1 className="h1-term relative mt-8 max-w-[26ch]">
         <span className={typing ? "invisible" : undefined}>{heroTitle}</span>
         {typing && (
           <span aria-hidden className="absolute inset-0">
             {heroTitle.slice(0, count)}
             <span
-              className="ml-[0.04em] inline-block h-[0.85em] w-[0.05em] translate-y-[0.08em] bg-cream"
+              className="ml-[0.08em] inline-block translate-y-[0.12em] bg-cream"
               style={{
-                opacity: caret ? 1 : 0,
-                transition: "opacity 0.3s",
-                animation: finished && caret
+                width: `${typewriter.caretWidthEm}em`,
+                height: `${typewriter.caretHeightEm}em`,
+                animation: finished
                   ? `caret-blink ${typewriter.caretBlinkMs}ms steps(1) infinite`
                   : undefined,
               }}
@@ -92,8 +86,8 @@ export function Hero() {
         {heroSubline}
       </motion.p>
       <motion.div {...fade(1)} className="mt-10 flex flex-wrap items-center gap-3">
-        <Button href="#projects">See projects ↓</Button>
-        <TextLink href={contact.resume} className="px-2 py-3">
+        <Button href="#projects">See projects</Button>
+        <TextLink tone="onBlue" href={contact.resume} className="px-2 py-3">
           Download resume
         </TextLink>
       </motion.div>

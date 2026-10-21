@@ -71,8 +71,8 @@ export default async function ProjectPage({
       <header style={{ backgroundColor: p.accent }} className="text-cream">
         <div className="wrap gutter pb-14 pt-32 md:pb-20 md:pt-40">
           <Reveal onMount>
-            <Link href="/#projects" className="label underline-offset-4 hover:underline">
-              ← All projects
+            <Link href="/#projects" className="label px-0.5 transition-colors duration-150 hover:bg-cream hover:text-ink">
+              &lt; All projects
             </Link>
           </Reveal>
           <Reveal onMount delay={0.08} y={24}>
@@ -93,7 +93,7 @@ export default async function ProjectPage({
                     value={s.value}
                     className="numeral block whitespace-nowrap text-[clamp(2.75rem,5vw,5.5rem)]"
                   />
-                  <p className="mt-2 max-w-[24ch] text-[0.8rem] leading-snug text-cream/70">
+                  <p className="mt-2 max-w-[24ch] font-mono text-[0.75rem] leading-snug text-cream/70">
                     {s.label}
                   </p>
                 </div>
@@ -105,14 +105,14 @@ export default async function ProjectPage({
             {meta.map(([k, v]) => (
               <div key={k}>
                 <dt className="label opacity-70">{k}</dt>
-                <dd className="mt-1 text-base">{v}</dd>
+                <dd className="mt-1 font-mono text-sm">{v}</dd>
               </div>
             ))}
           </dl>
           {p.link && (
             <p className="mt-6">
-              <a href={p.link} className="underline underline-offset-4">
-                Visit {p.link.replace(/^https?:\/\//, "")} ↗
+              <a href={p.link} className="font-mono text-base underline underline-offset-4">
+                Visit {p.link.replace(/^https?:\/\//, "")} -&gt;
               </a>
             </p>
           )}
@@ -156,8 +156,8 @@ export default async function ProjectPage({
       <nav aria-label="More projects" className="bg-card">
         <div className="wrap gutter grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8">
           {[
-            { label: "Previous", project: prev, align: "" },
-            { label: "Next", project: next, align: "md:text-right" },
+            { label: "< Prev", project: prev, align: "" },
+            { label: "Next >", project: next, align: "md:text-right" },
           ].map(({ label, project, align }) => (
             <Link
               key={label}
@@ -165,8 +165,8 @@ export default async function ProjectPage({
               className={`group block py-8 md:py-12 ${align}`}
             >
               <span className="label text-muted">{label}</span>
-              <span className="display mt-2 block text-2xl underline decoration-transparent decoration-2 underline-offset-2 transition-colors duration-200 group-hover:decoration-current md:text-4xl">
-                {project.title}
+              <span className="mt-2 block text-2xl font-medium tracking-tight md:text-4xl">
+                <span className="px-1 -mx-1 transition-colors duration-150 group-hover:bg-fg group-hover:text-bg">{project.title}</span>
               </span>
             </Link>
           ))}

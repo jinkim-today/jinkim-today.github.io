@@ -134,6 +134,7 @@ export const typewriter = {
   /** Subline and CTA appear after typing ends or this long, whichever is later. */
   minRevealMs: 1200,
   caretBlinkMs: 1000,
-  /** Blinks the caret stays after typing finishes before it fades. */
-  caretBlinks: 2,
+  /** Block caret size in em; it blinks and stays after typing finishes. */
+  caretWidthEm: 0.55,
+  caretHeightEm: 1,
 };

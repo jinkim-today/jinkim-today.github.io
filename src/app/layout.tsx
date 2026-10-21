@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { siteDescription, siteTitle, siteUrl } from "@/content/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} antialiased`}
+      className={`${inter.variable} ${plexMono.variable} antialiased`}
     >
       <head>
         <Script id="theme-init" strategy="beforeInteractive">{themeScript}</Script>

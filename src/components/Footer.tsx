@@ -10,7 +10,7 @@ export function Footer() {
           <SplitText text={footerTitle} stagger={0.12} />
         </p>
         <Reveal delay={0.55} y={16}>
-        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-lg">
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-base">
           <li><a className="underline underline-offset-4" href={`mailto:${contact.email}`}>{contact.email}</a></li>
           <li><a className="underline underline-offset-4" href={contact.linkedin}>LinkedIn</a></li>
           <li><a className="underline underline-offset-4" href={contact.github}>GitHub</a></li>

@@ -12,7 +12,7 @@ export function Tags({
 }) {
   return (
     <span
-      className={`label ${tone === "onBlue" ? "text-cream/70" : "text-muted"}`}
+      className={`label ${tone === "onBlue" ? "opacity-70" : "text-muted"}`}
     >
       {items.join(" · ")}
     </span>
@@ -30,13 +30,14 @@ export function Status({
   return (
     <span
       className={`label inline-flex items-center gap-2 ${
-        tone === "onBlue" ? "text-cream/70" : "text-muted"
+        tone === "onBlue" ? "opacity-70" : "text-muted"
       }`}
     >
       <span
         aria-hidden
-        className="inline-block h-1.5 w-1.5 rounded-full bg-current"
-        style={{ color: tone === "onBlue" ? "#7CFFB2" : "#16a34a" }}
+        className={`inline-block h-1.5 w-1.5 rounded-full bg-current ${
+          tone === "onBlue" ? "text-[#7CFFB2] group-hover:text-[#16a34a]" : "text-[#16a34a]"
+        }`}
       />
       {children}
     </span>
