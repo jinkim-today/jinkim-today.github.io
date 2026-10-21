@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-export type Stat = { value: string; label: string };
+export type Stat = { value: string; label: string; label_long?: string };
 
 export type Project = {
   slug: string;
@@ -21,6 +21,9 @@ export type Project = {
   order: number;
   featured: boolean;
   summary_kr: string;
+  keywords: string[];
+  one_liner_kr: string;
+  problem_fix?: { problem: string; fix: string };
   gallery?: string[];
   period: string;
   team: string;
@@ -33,6 +36,22 @@ const dir = path.join(process.cwd(), "content", "projects");
 
 export function plainHeadline(h: string) {
   return h.replace(/\*\*/g, "");
+}
+
+const contextTags: Record<string, string> = {
+  photobyme: "FOUNDED & SOLD",
+  "happyhour-map": "PERSONAL",
+  "chatgpt-followup-assistant": "PERSONAL",
+  "intelliworks-factory-erp": "MY CONSULTANCY",
+  "client-ai-implementation": "SDI · CLIENT WORK",
+  "hermes-slack-agents": "SDI · CLIENT WORK",
+  "realtor-ai-platform": "SDI · SOLE BUILDER",
+  "ai-chat-interior-app": "SDI · SOLE BUILDER",
+};
+
+/** Mono context line, e.g. `[01] 2026 · SDI · SOLE BUILDER`. `order` is 1-based position. */
+export function contextLabel(p: Pick<Project, "slug" | "year">, order: number) {
+  return `[${String(order).padStart(2, "0")}] ${p.year} · ${contextTags[p.slug] ?? "PROJECT"}`;
 }
 
 export function getProjects(): Project[] {
@@ -59,6 +78,9 @@ export function getProjects(): Project[] {
         order: data.order ?? 999,
         featured: Boolean(data.featured),
         summary_kr: data.summary_kr ?? "",
+        keywords: (data.keywords as string[] | undefined) ?? [],
+        one_liner_kr: data.one_liner_kr ?? "",
+        problem_fix: data.problem_fix as { problem: string; fix: string } | undefined,
         gallery: (data.gallery as string[] | undefined) ?? [],
         period: data.period ?? String(data.year),
         team: data.team ?? data.role,
