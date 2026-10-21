@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteDescription, siteTitle, siteUrl } from "@/content/site";
@@ -21,17 +20,15 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/og/default.png"] },
 };
 
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
+      style={{ colorScheme: "light" }}
       className={`${inter.variable} antialiased`}
     >
       <head>
-        <Script id="theme-init" strategy="beforeInteractive">{themeScript}</Script>
+        <meta name="color-scheme" content="light" />
       </head>
       <body className="flex min-h-screen flex-col">
         {children}

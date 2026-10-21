@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { contact, siteTitle } from "@/content/site";
 
 const link = "underline-offset-4 decoration-2 hover:underline";
@@ -33,7 +32,6 @@ export function Nav() {
           <Link href="/#writing" className={link}>Writing</Link>
           <Link href="/portfolio/" className={link}>Portfolio</Link>
           <a href={contact.resume} className={`${link} max-[420px]:hidden`}>Resume</a>
-          <ThemeToggle />
         </div>
       </nav>
     </header>

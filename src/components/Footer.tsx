@@ -3,7 +3,7 @@ import { contact, footerTitle } from "@/content/site";
 export function Footer() {
   const l = "underline underline-offset-4 decoration-1 hover:decoration-2 hover:text-accent";
   return (
-    <footer className="bg-footer-bg text-footer-fg">
+    <footer className="bg-fg text-bg">
       <div className="wrap gutter py-20 md:py-28">
         <p className="display text-[clamp(2.5rem,8vw,7rem)]">{footerTitle}</p>
         <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-base font-medium">
