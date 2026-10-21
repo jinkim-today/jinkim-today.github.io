@@ -1,7 +1,28 @@
 import Image from "next/image";
 import { contact, heroHeadline, heroIdentity } from "@/content/site";
 
-export function Hero() {
+/** `compact` = slide variant: em sizing, no CTA buttons, no top padding. */
+export function Hero({ compact = false }: { compact?: boolean }) {
+  if (compact) {
+    return (
+      <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-[2em] @5xl:grid-cols-[minmax(0,1fr)_auto] @5xl:gap-[3em]">
+        <div>
+          <h1 className="m-0 text-balance text-[2.5em] font-extrabold leading-none @5xl:text-[4.5em] tracking-[-0.03em]">{heroHeadline}</h1>
+          <p className="mt-[1.25em] text-[1.25em] text-mute">{heroIdentity}</p>
+        </div>
+        <div className="w-[15em] rounded-3xl bg-surface max-@5xl:hidden">
+          <Image
+            src="/images/profile.jpg"
+            alt="Illustration of Jin Kim holding a laptop"
+            width={400}
+            height={400}
+            unoptimized
+            className="aspect-square w-full rounded-3xl object-contain"
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <section className="grid grid-cols-[minmax(0,1fr)] items-center gap-8 pb-12 pt-28 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 md:pb-[72px] md:pt-40">
       <div className="order-2 md:order-1">

@@ -1,6 +1,15 @@
 import { Reveal } from "./Reveal";
 
-export function SectionHead({ index, title }: { index: string; title: string }) {
+/** `compact` = slide variant: em-based sizing (scales with the slide) and no scroll reveal. */
+export function SectionHead({ index, title, compact = false }: { index: string; title: string; compact?: boolean }) {
+  if (compact) {
+    return (
+      <div className="mb-[0.5em] flex items-baseline gap-[0.5em] text-[1em]">
+        <span className="text-[0.875em] font-semibold tabular-nums text-accent">{index}</span>
+        <h2 className="m-0 text-[2.5em] font-extrabold leading-tight tracking-[-0.03em]">{title}</h2>
+      </div>
+    );
+  }
   return (
     <Reveal>
       <div className="mb-8 flex items-baseline gap-4">

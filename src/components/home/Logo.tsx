@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { LogoTone } from "@/content/site";
 
-export function Logo({ src, tone, alt }: { src: string; tone: LogoTone; alt: string }) {
+export function Logo({ src, tone, alt, compact = false }: { src: string; tone: LogoTone; alt: string; compact?: boolean }) {
   return (
     <Image
       src={src}
@@ -10,7 +10,7 @@ export function Logo({ src, tone, alt }: { src: string; tone: LogoTone; alt: str
       height={40}
       unoptimized
       data-tone={tone}
-      className="logo-img"
+      className={compact ? "logo-img logo-img-compact" : "logo-img"}
     />
   );
 }
