@@ -12,7 +12,7 @@ import {
   contactStatus,
   proofStats,
   contact,
-  projectsSubline,
+  projectsStrip,
   howIWork,
   siteDescription,
   siteTitle,
@@ -87,7 +87,7 @@ export default function Home() {
             </Reveal>
           </div>
           <Reveal y={16} delay={0.16}>
-            <p className="mt-4 max-w-2xl text-cream/70">{projectsSubline}</p>
+            <p className="mt-4 max-w-3xl font-mono text-sm text-cream/80">{projectsStrip}</p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-12">
             {projects.map((p, i) => (
@@ -120,7 +120,7 @@ export default function Home() {
                     {t.org}
                     <span className="block text-base font-normal opacity-70">{t.role}</span>
                   </p>
-                  <p className="opacity-80 md:col-start-2 lg:col-start-3">{t.line}</p>
+                  <p className="opacity-80 md:col-start-2 lg:col-start-3">{t.short}</p>
                 </div>
                 </Reveal>
               </li>

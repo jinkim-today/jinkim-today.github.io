@@ -94,7 +94,7 @@ export default async function ProjectPage({
                     className="numeral block whitespace-nowrap text-[clamp(2.75rem,5vw,5.5rem)]"
                   />
                   <p className="mt-2 max-w-[24ch] font-mono text-[0.75rem] leading-snug text-cream/70">
-                    {s.label}
+                    {s.label_long ?? s.label}
                   </p>
                 </div>
               ))}

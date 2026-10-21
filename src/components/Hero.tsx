@@ -7,6 +7,7 @@ import {
   badgeText,
   contact,
   heroIdentity,
+  heroKeywords,
   heroSubline,
   heroTitle,
   typewriter,
@@ -65,7 +66,7 @@ export function Hero() {
   return (
     <>
       <p className="label text-cream/80">{badgeText}</p>
-      <p className="mt-3 font-mono text-sm text-cream/90 md:text-base">{heroIdentity}</p>
+      <p className="mt-3 font-mono text-[0.95rem] text-cream/90 md:text-lg">{heroIdentity}</p>
       <h1 className="h1-term relative mt-8 max-w-[26ch]">
         <span className={typing ? "invisible" : undefined}>{heroTitle}</span>
         {typing && (
@@ -93,6 +94,9 @@ export function Hero() {
           Download resume
         </TextLink>
       </motion.div>
+      <motion.p {...fade(2)} className="mt-6 max-w-3xl font-mono text-sm text-cream/80">
+        {heroKeywords}
+      </motion.p>
     </>
   );
 }

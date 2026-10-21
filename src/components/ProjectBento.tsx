@@ -4,11 +4,11 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Headline } from "@/components/Headline";
 import { Status, Tags } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import { StatNumber } from "@/components/ui/StatNumber";
 import type { BentoSize } from "@/lib/bento";
+import { contextLabel } from "@/lib/context-label";
 import type { Project } from "@/lib/content";
 
 // 12-col grid on lg; 2 cols on sm; 1 col on mobile. Literal strings for Tailwind.
@@ -97,7 +97,7 @@ export function ProjectBento({
   const hasStats = stats.length > 0;
   const bigStat = size === "feature" || size === "wide";
   const isBlue = project.accent.toLowerCase() === "#0a1fff";
-  const num = String(index + 1).padStart(2, "0");
+  const keyLine = project.keywords.slice(0, 2).join(" · ");
   const title =
     size === "feature"
       ? "text-3xl lg:text-[2.5rem]"
@@ -114,9 +114,9 @@ export function ProjectBento({
     : "";
   const coverBox = horizontal
     ? size === "feature"
-      ? "aspect-[16/10] sm:aspect-auto sm:w-[55%] sm:shrink-0"
+      ? "aspect-[16/10] sm:aspect-auto sm:w-[60%] sm:shrink-0"
       : "aspect-[16/10] sm:aspect-auto sm:w-[40%] sm:shrink-0"
-    : "aspect-[16/10]";
+    : "aspect-[16/11]";
 
   return (
     <Reveal delay={(index % 3) * 0.06} y={32} scale={0.98} duration={0.5} className={`${SPAN[size]} min-w-0`}>
@@ -147,9 +147,7 @@ export function ProjectBento({
         >
           <div className="min-w-0">
             <div className="flex items-center justify-between gap-3">
-              <span className="label opacity-70">
-                [{num}] {project.year}
-              </span>
+              <span className="label opacity-70">{contextLabel(project, index + 1)}</span>
               {rich && (
                 <Status tone="onBlue">{project.status}</Status>
               )}
@@ -159,20 +157,13 @@ export function ProjectBento({
             >
               {project.title}
             </h3>
-            {size === "small" && hasStats ? (
-              <div className="mt-6">
+            {keyLine && (
+              <p className="mt-3 text-[0.95rem] text-cream/85 group-hover:text-blue">{keyLine}</p>
+            )}
+            {size === "small" && hasStats && (
+              <div className="mt-5">
                 <Stat stat={stats[0]} big={false} />
               </div>
-            ) : (
-              <p
-                className={`mt-3 opacity-70 ${
-                  bigStat && hasStats ? "text-[0.95rem]" : "text-base"
-                } ${size === "full" ? "lg:line-clamp-2" : ""} ${
-                  size === "small" ? "truncate" : ""
-                }`}
-              >
-                <Headline text={project.headline} />
-              </p>
             )}
           </div>
           {bigStat && hasStats && (
@@ -183,7 +174,7 @@ export function ProjectBento({
             </div>
           )}
           <div className="mt-5 flex items-end justify-between gap-3">
-            <Tags tone="onBlue" items={project.tags.slice(0, rich ? 3 : 2)} />
+            {rich ? <Tags tone="onBlue" items={project.tags.slice(0, 3)} /> : <span />}
             <Arrow />
           </div>
         </div>

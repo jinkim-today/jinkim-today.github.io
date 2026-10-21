@@ -3,7 +3,8 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { PrintButton } from "@/components/PrintButton";
 import { about, contact, contactStatus, footerTitle, proofStats, siteUrl } from "@/content/site";
-import { contextLabel, getProjects, type Project } from "@/lib/content";
+import { contextLabel } from "@/lib/context-label";
+import { getProjects, type Project } from "@/lib/content";
 
 export function generateMetadata(): Metadata {
   return {
