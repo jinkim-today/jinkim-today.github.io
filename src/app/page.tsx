@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
-import { Headline } from "@/components/Headline";
+import { CopyEmail } from "@/components/CopyEmail";
 import { ProjectBento } from "@/components/ProjectBento";
 import { bentoSize } from "@/lib/bento";
 import { Button, TextLink } from "@/components/ui/Button";
-import { Marquee } from "@/components/ui/Marquee";
+import { StatNumber } from "@/components/ui/StatNumber";
 import { HairlineGrow, Reveal } from "@/components/ui/Reveal";
 import {
+  about,
   aboutSummary,
+  contactStatus,
+  proofStats,
   contact,
   projectsSubline,
   howIWork,
@@ -31,7 +32,6 @@ export default function Home() {
   const projects = getProjects();
   const posts = getPosts();
   const latest = posts.slice(0, 3);
-  const featured = projects.filter((p) => p.featured).slice(0, 5);
 
   const personLd = {
     "@context": "https://schema.org",
@@ -39,7 +39,9 @@ export default function Home() {
     name: siteTitle,
     url: siteUrl,
     email: contact.email,
-    jobTitle: "Forward-deployed and AI engineer",
+    jobTitle: "AI & Forward Deployed Engineer",
+    worksFor: { "@type": "Organization", name: "SDI Creative Technologies" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Simon Fraser University" },
     sameAs: [contact.linkedin, contact.github],
   };
 
@@ -55,28 +57,17 @@ export default function Home() {
           <Hero />
         </div>
 
-        <div className="py-6">
-          <Marquee>
-            {featured.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/projects/${p.slug}/`}
-                className="group relative mr-4 block w-[72vw] max-w-[28rem] shrink-0 overflow-hidden"
-              >
-                <Image
-                  src={p.cover}
-                  alt={`${p.title} cover`}
-                  width={1600}
-                  height={1000}
-                  className="aspect-[16/10] w-full object-cover"
-                />
-                <span className="absolute inset-x-0 bottom-0 translate-y-full bg-cream p-3 text-sm text-ink transition-transform duration-200 group-hover:translate-y-0 group-focus-visible:translate-y-0">
-                  <strong className="block font-display text-base font-medium">{p.title}</strong>
-                  <Headline text={p.headline} />
-                </span>
-              </Link>
+        <div className="wrap gutter pb-16 md:pb-20">
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-12">
+            {proofStats.map((s, i) => (
+              <Reveal key={s.label} y={24} delay={i * 0.1} className="min-w-0">
+                <dt className="numeral text-[clamp(2.75rem,6vw,5rem)]">
+                  <StatNumber value={s.value} />
+                </dt>
+                <dd className="label mt-3 max-w-[22ch] leading-relaxed text-cream/70">{s.label}</dd>
+              </Reveal>
             ))}
-          </Marquee>
+          </dl>
         </div>
       </section>
 
@@ -108,6 +99,36 @@ export default function Home() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="experience" className="bg-bg">
+        <div className="wrap gutter py-20 md:py-28">
+          <Reveal y={24}>
+            <p className="label text-muted">{"// "}Where I have worked</p>
+          </Reveal>
+          <Reveal y={24} delay={0.08}>
+            <h2 className="display h2-section mt-3">Experience</h2>
+          </Reveal>
+          <ul className="mt-12">
+            {about.timeline.map((t, i) => (
+              <li key={t.org} className="min-w-0">
+                <Reveal y={16} delay={Math.min(i, 5) * 0.06}>
+                <div className="grid grid-cols-1 gap-x-8 gap-y-1 py-5 transition-colors duration-150 hover:bg-fg hover:text-bg md:grid-cols-[13rem_1fr] md:px-3 lg:grid-cols-[13rem_minmax(0,22rem)_1fr]">
+                  <p className="label opacity-70 md:pt-1.5">{t.when}</p>
+                  <p className="font-display text-lg font-medium">
+                    {t.org}
+                    <span className="block text-base font-normal opacity-70">{t.role}</span>
+                  </p>
+                  <p className="opacity-80 md:col-start-2 lg:col-start-3">{t.line}</p>
+                </div>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10">
+            <TextLink href="/about/">Full background</TextLink>
+          </p>
         </div>
       </section>
 
@@ -170,6 +191,24 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="mt-20">
+            <Reveal y={24}>
+              <p className="label text-muted">{"// "}Stack</p>
+            </Reveal>
+            <Reveal y={24} delay={0.08}>
+              <h2 className="display h2-section mt-3">Skills</h2>
+            </Reveal>
+            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:gap-x-12">
+              {about.skills.map((g, i) => (
+                <Reveal key={g.group} y={24} delay={i * 0.1} className="min-w-0">
+                  <dt className="label">{g.group}</dt>
+                  <dd className="mt-3 font-mono text-sm leading-relaxed text-muted">
+                    {g.items.split(", ").join(" · ")}
+                  </dd>
+                </Reveal>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
@@ -195,12 +234,18 @@ export default function Home() {
           </div>
           <Reveal delay={0.08}>
             <p className="label text-muted">{"// "}Contact</p>
-            <ul className="mt-3 space-y-2 text-xl">
+            <p className="mt-3 font-mono text-sm">
+              <span className="label text-muted">{"// "}Status</span>
+              {"  "}
+              {contactStatus}
+            </p>
+            <ul className="mt-6 space-y-2 text-xl">
               <li><a className="underline underline-offset-4" href={`mailto:${contact.email}`}>{contact.email}</a></li>
               <li><a className="underline underline-offset-4" href={contact.linkedin}>{contact.linkedinLabel}</a></li>
               <li><a className="underline underline-offset-4" href={contact.github}>{contact.githubLabel}</a></li>
             </ul>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <CopyEmail email={contact.email} />
               <Button href={contact.resume} tone="onLight">
                 Resume (PDF)
               </Button>

@@ -6,6 +6,7 @@ import { Button, TextLink } from "@/components/ui/Button";
 import {
   badgeText,
   contact,
+  heroIdentity,
   heroSubline,
   heroTitle,
   typewriter,
@@ -64,6 +65,7 @@ export function Hero() {
   return (
     <>
       <p className="label text-cream/80">{badgeText}</p>
+      <p className="mt-3 font-mono text-sm text-cream/90 md:text-base">{heroIdentity}</p>
       <h1 className="h1-term relative mt-8 max-w-[26ch]">
         <span className={typing ? "invisible" : undefined}>{heroTitle}</span>
         {typing && (

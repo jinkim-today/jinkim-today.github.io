@@ -7,6 +7,9 @@ export const siteDescription =
 
 export const badgeText = "Open to FDE / AI Engineer roles · Seoul & Vancouver";
 
+export const heroIdentity =
+  "Jin Kim · Fullstack & AI engineer · Seongnam, KR -> Vancouver, CA (2027)";
+
 export const heroTitle =
   "I go on-site, find the real problem, and ship the software that fixes it.";
 export const heroSubline =
@@ -16,6 +19,16 @@ export const projectsSubline =
   "Everything I have shipped, on-site and in production.";
 
 export const writingSubline = "Notes from building software where the work happens.";
+
+export const proofStats = [
+  { value: "2", label: "companies founded, 1 sold" },
+  { value: "8", label: "projects shipped to production" },
+  { value: "3", label: "client companies on AI implementation" },
+  { value: "10+", label: "years living and working in Canada" },
+];
+
+export const contactStatus =
+  "Open to FDE / AI engineer roles from early 2027 · Seoul or Vancouver";
 
 export const footerTitle = "Let's build something.";
 
