@@ -239,28 +239,42 @@ body {
 
 /* Case study body */
 .case-body h2 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin: 3rem 0 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 1.5rem;
+  margin: 3.5rem 0 1.25rem;
+  color: var(--fg);
+}
+.case-body h2:first-child {
+  margin-top: 0;
 }
 .case-body p,
 .case-body ul,
 .case-body ol {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
 }
 .case-body ul {
   padding-left: 1.25rem;
   list-style: disc;
 }
+.case-body ol {
+  padding-left: 1.25rem;
+  list-style: decimal;
+}
+.case-body li {
+  margin-bottom: 0.4rem;
+}
 .case-body strong {
   font-weight: 700;
+  color: var(--accent);
 }
 .case-body a {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.case-body a:hover {
+  color: var(--accent);
 }
 
 /* Case-study code blocks (architecture flow lines) wrap instead of overflowing */

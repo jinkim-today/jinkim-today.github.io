@@ -3,10 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Headline } from "@/components/Headline";
-import { MotionH2, MotionP, MotionUl } from "@/components/ui/MotionProse";
-import { Reveal } from "@/components/ui/Reveal";
-import { StatNumber } from "@/components/ui/StatNumber";
+import { Reveal } from "@/components/home/Reveal";
 import { siteTitle, siteUrl } from "@/content/site";
 import { getAdjacent, getProject, getProjects, plainHeadline } from "@/lib/content";
 
@@ -42,6 +39,7 @@ export default async function ProjectPage({
   const p = getProject(slug);
   if (!p) notFound();
   const { prev, next } = getAdjacent(p.slug);
+  const index = String(getProjects().findIndex((x) => x.slug === p.slug) + 1).padStart(2, "0");
 
   const ld = {
     "@context": "https://schema.org",
@@ -54,13 +52,14 @@ export default async function ProjectPage({
     image: `${siteUrl}${p.cover}`,
   };
 
-  const meta: [string, string][] = [
-    ["Role", p.role],
+  const facts: [string, string][] = [
+    ["Period", p.period],
     ["Org", p.org],
+    ["Role & team", p.team],
+    ["Contribution", p.contribution],
     ["Stack", p.tags.join(", ")],
-    ["Year", String(p.year)],
     ["Status", p.status],
-  ];
+  ].filter(([, v]) => v) as [string, string][];
 
   return (
     <article>
@@ -68,84 +67,96 @@ export default async function ProjectPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
       />
-      <header style={{ backgroundColor: p.accent }} className="text-cream">
-        <div className="wrap gutter pb-14 pt-32 md:pb-20 md:pt-40">
-          <Reveal onMount>
-            <Link href="/#projects" className="label px-0.5 transition-colors duration-150 hover:bg-cream hover:text-ink">
-              &lt; All projects
-            </Link>
-          </Reveal>
-          <Reveal onMount delay={0.08} y={24}>
-            <h1 className="display mt-8 max-w-[20ch] text-[clamp(2.25rem,6.5vw,6rem)]">
-              {p.title}
-            </h1>
-          </Reveal>
-          <Reveal onMount delay={0.16} y={24}>
-            <p className="mt-6 max-w-3xl text-xl md:text-2xl">
-              <Headline text={p.headline} />
-            </p>
-          </Reveal>
-          {p.stats.length > 0 && (
-            <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6">
-              {p.stats.map((s) => (
-                <div key={s.value}>
-                  <StatNumber
-                    value={s.value}
-                    className="numeral block whitespace-nowrap text-[clamp(2.75rem,5vw,5.5rem)]"
-                  />
-                  <p className="mt-2 max-w-[24ch] font-mono text-[0.75rem] leading-snug text-cream/70">
-                    {s.label_long ?? s.label}
-                  </p>
+      <div className="wrap-home gutter pb-24 pt-28 md:pt-36">
+        <div className="flex items-baseline gap-4">
+          <span className="text-sm font-semibold tabular-nums text-accent">{index}</span>
+          <Link href="/#projects" className="text-sm font-medium text-mute hover:text-accent">
+            &larr; Projects
+          </Link>
+        </div>
+        <h1 className="m-0 mt-6 text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-none tracking-[-0.03em]">
+          {p.title}
+        </h1>
+        {p.one_liner_kr && (
+          <p className="mt-5 max-w-[48rem] text-[1.25rem] leading-snug text-mute" lang="ko">
+            {p.one_liner_kr}
+          </p>
+        )}
+
+        {p.stats.length > 0 && (
+          <div className="mt-12 flex flex-wrap gap-x-16 gap-y-8">
+            {p.stats.map((s) => (
+              <div key={s.value}>
+                <div className="text-5xl font-extrabold leading-none tracking-[-0.03em] text-accent tabular-nums">
+                  {s.value}
                 </div>
-              ))}
-            </div>
-          )}
-          <Reveal onMount delay={0.24} y={24}>
-          <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5">
-            {meta.map(([k, v]) => (
-              <div key={k}>
-                <dt className="label opacity-70">{k}</dt>
-                <dd className="mt-1 font-mono text-sm">{v}</dd>
+                <p className="mt-2 max-w-[24ch] text-sm leading-snug text-mute">
+                  {s.label_long ?? s.label}
+                </p>
               </div>
             ))}
-          </dl>
-          {p.link && (
-            <p className="mt-6">
-              <a href={p.link} className="font-mono text-base underline underline-offset-4">
-                Visit {p.link.replace(/^https?:\/\//, "")} -&gt;
-              </a>
-            </p>
-          )}
-          </Reveal>
-        </div>
-      </header>
+          </div>
+        )}
 
-      <div className="wrap gutter py-14 md:py-20">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <aside className="rounded-lg bg-card p-5 md:p-6" lang="ko">
-              <p className="label text-muted">요약</p>
-              <p className="mt-2 text-base">{p.summary_kr}</p>
-            </aside>
-          </Reveal>
-          <div className="case-body mt-6">
-            <MDXRemote
-              source={p.body}
-              components={{ h2: MotionH2, p: MotionP, ul: MotionUl }}
-            />
+        <dl className="mt-14 grid grid-cols-1 border-t border-rule md:grid-cols-2 md:gap-x-12 lg:grid-cols-3">
+          {facts.map(([k, v]) => (
+            <div key={k} className="border-b border-rule py-5">
+              <dt className="label text-mute">{k}</dt>
+              <dd className="m-0 mt-2 text-base">{v}</dd>
+            </div>
+          ))}
+          {(p.links.length > 0 || p.link) && (
+            <div className="border-b border-rule py-5">
+              <dt className="label text-mute">Links</dt>
+              <dd className="m-0 mt-2 flex flex-col gap-1 text-base">
+                {(p.links.length > 0 ? p.links : [{ label: p.link!.replace(/^https?:\/\//, ""), url: p.link! }]).map(
+                  (l) => (
+                    <a key={l.url} href={l.url} className="underline underline-offset-4 hover:text-accent">
+                      {l.label}
+                    </a>
+                  ),
+                )}
+              </dd>
+            </div>
+          )}
+        </dl>
+
+        <div className="mt-14 rounded-2xl bg-surface p-4 md:p-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={p.cover}
+            alt={`${p.title} cover`}
+            width={1600}
+            height={1000}
+            className="block h-auto w-full rounded-lg"
+          />
+        </div>
+
+        <div className="mx-auto mt-14 max-w-3xl">
+          {p.summary_kr && (
+            <Reveal>
+              <aside className="rounded-2xl bg-surface p-6 md:p-8" lang="ko">
+                <p className="label m-0 text-mute">요약</p>
+                <p className="mt-3 text-base">{p.summary_kr}</p>
+              </aside>
+            </Reveal>
+          )}
+          <div className="case-body mt-10">
+            <MDXRemote source={p.body} />
           </div>
         </div>
+
         {p.gallery && p.gallery.length > 0 && (
-          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2">
             {p.gallery.map((src, i) => (
-              <Reveal key={src} delay={(i % 2) * 0.08}>
+              <Reveal key={src}>
                 <Image
                   src={src}
                   alt={`${p.title} screenshot ${i + 1}`}
                   width={1600}
                   height={1000}
                   unoptimized
-                  className="h-auto w-full rounded-lg"
+                  className="h-auto w-full rounded-lg bg-surface"
                 />
               </Reveal>
             ))}
@@ -153,20 +164,20 @@ export default async function ProjectPage({
         )}
       </div>
 
-      <nav aria-label="More projects" className="bg-card">
-        <div className="wrap gutter grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-8">
+      <nav aria-label="More projects" className="wrap-home gutter pb-24">
+        <div className="grid grid-cols-1 border-t border-rule md:grid-cols-2 md:gap-8">
           {[
-            { label: "< Prev", project: prev, align: "" },
-            { label: "Next >", project: next, align: "md:text-right" },
+            { label: "Previous", project: prev, align: "" },
+            { label: "Next", project: next, align: "md:text-right" },
           ].map(({ label, project, align }) => (
             <Link
               key={label}
               href={`/projects/${project.slug}/`}
               className={`group block py-8 md:py-12 ${align}`}
             >
-              <span className="label text-muted">{label}</span>
-              <span className="mt-2 block text-2xl font-medium tracking-tight md:text-4xl">
-                <span className="px-1 -mx-1 transition-colors duration-150 group-hover:bg-fg group-hover:text-bg">{project.title}</span>
+              <span className="label text-mute">{label}</span>
+              <span className="mt-2 block text-3xl font-extrabold leading-tight tracking-[-0.02em] group-hover:text-accent md:text-4xl">
+                {project.title}
               </span>
             </Link>
           ))}
