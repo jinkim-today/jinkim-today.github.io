@@ -98,7 +98,7 @@ export const about = {
   timeline: [
     {
       org: "SDI Creative Technologies",
-      logo: "/logos/sdi.svg",
+      logo: "/logos/sdi.jpg",
       logoTone: "dark" as LogoTone,
       short: "Built 2 AI apps, led AI for 3 client companies",
       role: "AI & Forward Deployed Engineer",
