@@ -48,18 +48,6 @@
   --color-footer-fg: var(--footer-fg);
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-inter), system-ui, sans-serif;
-
-  /* LEGACY aliases for Phase 2 pages (about, projects/[slug], blog, deck, ProjectBento,
-     PostItem, ui/Button). Remove each once its page is restyled with the tokens above. */
-  --color-blue: var(--fg);
-  --color-blue-deep: var(--fg);
-  --color-cream: var(--bg);
-  --color-ink: #0b0b0f;
-  --color-card: var(--surface);
-  --color-band: var(--surface);
-  --color-line: var(--rule);
-  --color-muted: var(--mute);
-  --font-mono: var(--font-inter), system-ui, sans-serif;
 }
 
 html {
@@ -210,33 +198,6 @@ body {
   }
 }
 
-/* Marquee (legacy, only ui/Marquee) */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 50s linear infinite;
-}
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track {
-  animation-play-state: paused;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-  .marquee {
-    overflow-x: auto;
-  }
-}
-
 /* Case study body */
 .case-body h2 {
   font-weight: 700;
@@ -291,7 +252,7 @@ body:has(.portfolio) {
   color: #0b0b0f;
 }
 .portfolio {
-  --pf-blue: #0a1fff;
+  --pf-accent: #ff5a1f;
   --pf-ink: #0b0b0f;
   --pf-mute: #5c5c66;
   --pf-rule: #d9d5c9;
@@ -306,7 +267,7 @@ body:has(.portfolio) {
   print-color-adjust: exact;
 }
 .portfolio a {
-  color: var(--pf-blue);
+  color: var(--pf-accent);
   text-decoration: none;
   overflow-wrap: anywhere;
 }
@@ -340,10 +301,10 @@ body:has(.portfolio) {
   }
 }
 .portfolio .pf-pageno {
+  font-variant-numeric: tabular-nums;
   position: absolute;
   bottom: 1.4em;
   right: 1.25em;
-  font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--pf-mute);
 }
@@ -355,26 +316,23 @@ body:has(.portfolio) {
   }
 }
 .portfolio .pf-label {
-  font-family: var(--font-mono);
   font-size: 0.875em;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--pf-blue);
+  color: var(--pf-accent);
 }
 .portfolio .pf-big {
   display: block;
-  font-family: var(--font-mono);
-  font-weight: 500;
+  font-weight: 800;
   font-size: 3em;
   line-height: 1;
-  color: var(--pf-blue);
+  color: var(--pf-accent);
   letter-spacing: -0.02em;
 }
 .portfolio .pf-cap {
   display: block;
   margin-top: 0.4em;
-  font-family: var(--font-mono);
   font-size: 0.8125em;
   color: var(--pf-mute);
 }
@@ -383,7 +341,7 @@ body:has(.portfolio) {
   font-size: 1.125em;
 }
 .portfolio .pf-h {
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
@@ -396,7 +354,6 @@ body:has(.portfolio) {
   display: flex;
   gap: 1em 1.5em;
   align-items: center;
-  font-family: var(--font-mono);
   font-size: 0.8125rem;
 }
 @media (min-width: 1024px) {
@@ -407,8 +364,9 @@ body:has(.portfolio) {
 }
 .portfolio .pf-btn {
   font: inherit;
+  font-weight: 600;
   cursor: pointer;
-  background: var(--pf-blue);
+  background: var(--pf-accent);
   color: #fff;
   padding: 8px 14px;
 }
@@ -420,7 +378,7 @@ body:has(.portfolio) {
 }
 .portfolio .pf-cover h1 {
   font-size: min(6.5em, 14vw);
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -439,7 +397,6 @@ body:has(.portfolio) {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3em 1.75em;
-  font-family: var(--font-mono);
   font-size: 0.95em;
 }
 .portfolio .pf-stats {
@@ -506,20 +463,20 @@ body:has(.portfolio) {
 }
 .portfolio .pf-idx {
   margin-top: 0.6em;
-  font-family: var(--font-mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   font-size: 0.8125em;
-  color: var(--pf-mute);
+  color: var(--pf-accent);
 }
 .portfolio .pf-t {
   font-size: 1.0625em;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
 }
 .portfolio .pf-num {
   margin-top: 0.25em;
-  font-family: var(--font-mono);
   font-size: 0.875em;
-  color: var(--pf-blue);
+  color: var(--pf-accent);
 }
 
 /* 3-10 project */
@@ -567,10 +524,11 @@ body:has(.portfolio) {
   }
 }
 .portfolio .pf-ctx {
-  font-family: var(--font-mono);
   font-size: 0.8125em;
-  letter-spacing: 0.04em;
-  color: var(--pf-blue);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pf-accent);
 }
 .portfolio .pf-proj .pf-h {
   margin-top: 0.7em;
@@ -591,18 +549,16 @@ body:has(.portfolio) {
 .portfolio .pf-kw {
   margin-top: 1.4em;
   list-style: none;
-  font-family: var(--font-mono);
   font-size: 0.95em;
   line-height: 1.55;
 }
 .portfolio .pf-kw li::before {
   content: "▸ ";
-  color: var(--pf-blue);
+  color: var(--pf-accent);
 }
 .portfolio .pf-facts {
   margin-top: auto;
   padding-top: 1.2em;
-  font-family: var(--font-mono);
   font-size: 0.75em;
   line-height: 1.5;
   color: var(--pf-mute);
@@ -612,13 +568,11 @@ body:has(.portfolio) {
 }
 .portfolio .pf-pf {
   margin-top: 0.6em;
-  font-family: var(--font-mono);
   font-size: 0.75em;
   line-height: 1.5;
 }
 .portfolio .pf-case {
   margin-top: 0.9em;
-  font-family: var(--font-mono);
   font-size: 0.875em;
 }
 .portfolio .pf-printurl {
@@ -663,16 +617,16 @@ body:has(.portfolio) {
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: var(--pf-blue);
+    background: var(--pf-accent);
   }
 }
 .portfolio .pf-when {
-  font-family: var(--font-mono);
+  font-weight: 600;
   font-size: 0.75em;
-  color: var(--pf-blue);
+  color: var(--pf-accent);
 }
 .portfolio .pf-org {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.0625em;
   line-height: 1.2;
 }
@@ -698,12 +652,11 @@ body:has(.portfolio) {
   }
 }
 .portfolio .pf-skills h3 {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.0625em;
 }
 .portfolio .pf-skills p {
   margin-top: 0.5em;
-  font-family: var(--font-mono);
   font-size: 0.8125em;
   line-height: 1.7;
   color: var(--pf-mute);
@@ -718,14 +671,14 @@ body:has(.portfolio) {
 }
 .portfolio .pf-closeh {
   font-size: min(5.5em, 11vw);
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
 }
 .portfolio .pf-email {
   margin-top: 0.6em;
   font-size: min(2.75em, 7vw);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 .portfolio .pf-links {
@@ -733,17 +686,14 @@ body:has(.portfolio) {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4em 2em;
-  font-family: var(--font-mono);
   font-size: 1.1em;
 }
 .portfolio .pf-status {
   margin-top: 2em;
-  font-family: var(--font-mono);
   font-size: 0.875em;
   color: var(--pf-mute);
 }
 .portfolio .pf-foot {
-  font-family: var(--font-mono);
   font-size: 0.75em;
   color: var(--pf-mute);
 }
@@ -809,7 +759,7 @@ body:has(.portfolio) {
   }
   .portfolio .pf-printurl {
     display: inline;
-    color: var(--pf-blue);
+    color: var(--pf-accent);
   }
   .portfolio .pf-pageno {
     right: 56px;
@@ -831,7 +781,7 @@ body:has(.portfolio) {
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: var(--pf-blue);
+    background: var(--pf-accent);
   }
   .portfolio .pf-skills {
     grid-template-columns: repeat(3, 1fr);
@@ -847,33 +797,5 @@ body:has(.portfolio) {
   .portfolio .pf-mat {
     aspect-ratio: auto;
     flex: 1;
-  }
-}
-
-/* Home: tile hover swap (tags -> keywords). Touch devices show keywords only. */
-.tile-meta {
-  display: grid;
-}
-.tile-meta > * {
-  grid-area: 1 / 1;
-  transition: opacity 200ms ease-out;
-}
-.tile-meta .tile-kw {
-  opacity: 0;
-}
-.group:hover .tile-meta .tile-tags,
-.group:focus-visible .tile-meta .tile-tags {
-  opacity: 0;
-}
-.group:hover .tile-meta .tile-kw,
-.group:focus-visible .tile-meta .tile-kw {
-  opacity: 1;
-}
-@media (hover: none) {
-  .tile-meta .tile-tags {
-    opacity: 0;
-  }
-  .tile-meta .tile-kw {
-    opacity: 1;
   }
 }

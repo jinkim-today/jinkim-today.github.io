@@ -79,12 +79,12 @@ function ProjectSlide({ p, i, n }: { p: Project; i: number; n: number }) {
         </p>
         {p.problem_fix ? (
           <p className="pf-pf">
-            Problem: {p.problem_fix.problem} -&gt; Fix: {p.problem_fix.fix}
+            Problem: {p.problem_fix.problem} → Fix: {p.problem_fix.fix}
           </p>
         ) : null}
         <p className="pf-case">
           <a href={`/projects/${p.slug}/`} className="pf-screen">
-            Full case study -&gt;
+            Full case study →
           </a>
           <span className="pf-printurl">{caseUrl.replace(/^https?:\/\//, "")}</span>
         </p>
@@ -113,7 +113,7 @@ export default function PortfolioPage() {
       <Slide n={1} className="pf-cover">
         <div className="pf-actions no-print">
           <PrintButton />
-          <a href="/portfolio.pdf">Download PDF -&gt;</a>
+          <a href="/portfolio.pdf">Download PDF →</a>
         </div>
         <div className="pf-cover-main">
           <h1>Jin Kim (김진)</h1>
@@ -140,7 +140,7 @@ export default function PortfolioPage() {
       </Slide>
 
       <Slide n={2} className="pf-overview">
-        <p className="pf-label">{`// PROJECTS · ${projects.length}`}</p>
+        <p className="pf-label">{`PROJECTS · ${projects.length}`}</p>
         <div className="pf-grid">
           {projects.map((p, i) => {
             const s = p.stats[0];
@@ -156,7 +156,7 @@ export default function PortfolioPage() {
                     className="pf-img"
                   />
                 </span>
-                <span className="pf-idx">[{String(i + 1).padStart(2, "0")}]</span>
+                <span className="pf-idx">{String(i + 1).padStart(2, "0")}</span>
                 <span className="pf-t">{p.title}</span>
                 {s ? (
                   <span className="pf-num">
@@ -176,7 +176,7 @@ export default function PortfolioPage() {
       ))}
 
       <Slide n={11} className="pf-exp">
-        <p className="pf-label">{"// EXPERIENCE"}</p>
+        <p className="pf-label">Experience</p>
         <ol className="pf-timeline">
           {timeline.map((t) => (
             <li key={t.org}>
@@ -187,7 +187,7 @@ export default function PortfolioPage() {
             </li>
           ))}
         </ol>
-        <p className="pf-label pf-label2">{"// SKILLS"}</p>
+        <p className="pf-label pf-label2">Skills</p>
         <div className="pf-skills">
           {skillCols.map((c) => (
             <div key={c.group}>
@@ -209,7 +209,7 @@ export default function PortfolioPage() {
             <a href={contact.github}>{contact.githubLabel}</a>
             <a href={siteUrl}>{host}</a>
           </p>
-          <p className="pf-status">{`// STATUS  ${contactStatus}`}</p>
+          <p className="pf-status">{`STATUS  ${contactStatus}`}</p>
         </div>
         <p className="pf-foot">{host}/portfolio · 2026-10</p>
       </Slide>

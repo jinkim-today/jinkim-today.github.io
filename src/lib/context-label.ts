@@ -9,7 +9,7 @@ const contextTags: Record<string, string> = {
   "ai-chat-interior-app": "SDI · SOLE BUILDER",
 };
 
-/** Mono context line, e.g. `[01] 2026 · SDI · SOLE BUILDER`. `order` is 1-based position. */
+/** Context line, e.g. `01 · 2026 · SDI · SOLE BUILDER`. `order` is 1-based position. */
 export function contextLabel(p: { slug: string; year: number }, order: number) {
-  return `[${String(order).padStart(2, "0")}] ${p.year} · ${contextTags[p.slug] ?? "PROJECT"}`;
+  return `${String(order).padStart(2, "0")} · ${p.year} · ${contextTags[p.slug] ?? "PROJECT"}`;
 }

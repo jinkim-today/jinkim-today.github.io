@@ -45,7 +45,7 @@ export default function AboutPage() {
             className="block h-auto w-full rounded-lg"
           />
         </div>
-        <div className="max-w-[68ch] space-y-5 text-[1.125rem]">
+        <div className="flex max-w-[68ch] flex-col gap-5 text-[1.125rem]">
           {about.intro.map((s) => (
             <p key={s} className="m-0">
               {s}
