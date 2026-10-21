@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 
-type Tone = "onBlue" | "onLight";
+type Tone = "onBlue" | "onLight" | "accent";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-[2px] px-5 py-3 font-mono text-base font-medium transition-colors duration-200";
@@ -8,11 +8,13 @@ const base =
 const solid: Record<Tone, string> = {
   onBlue: "bg-cream text-blue hover:bg-white",
   onLight: "bg-blue text-cream hover:bg-blue-deep",
+  accent: "bg-accent text-ink hover:bg-white",
 };
 
 const hover: Record<Tone, string> = {
   onBlue: "hover:bg-cream hover:text-blue hover:no-underline",
   onLight: "hover:bg-fg hover:text-bg hover:no-underline",
+  accent: "hover:bg-cream hover:text-blue hover:no-underline",
 };
 
 type Props = {

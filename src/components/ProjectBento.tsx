@@ -23,7 +23,7 @@ function Arrow() {
   return (
     <span
       aria-hidden
-      className="inline-block font-mono text-lg transition-transform duration-200 ease-out group-hover:translate-x-1.5"
+      className="inline-block shrink-0 whitespace-nowrap font-mono text-lg transition-transform duration-200 ease-out group-hover:translate-x-1.5 group-hover:text-accent"
     >
       -&gt;
     </span>
@@ -41,13 +41,15 @@ function Stat({
     <div className="min-w-0">
       <StatNumber
         value={stat.value}
-        className={`numeral block whitespace-nowrap ${
+        className={`numeral block whitespace-nowrap text-accent ${
           big ? "text-[clamp(2.75rem,5vw,5.5rem)]" : "text-[clamp(2rem,3.5vw,3.25rem)]"
         }`}
       />
-      <p className="mt-2 max-w-[22ch] font-mono text-[0.75rem] leading-snug opacity-70">
-        {stat.label}
-      </p>
+      {stat.label && (
+        <p className="mt-2 max-w-[22ch] font-mono text-[0.75rem] leading-snug opacity-70">
+          {stat.label.split(" ").slice(0, 3).join(" ")}
+        </p>
+      )}
     </div>
   );
 }
@@ -97,7 +99,7 @@ export function ProjectBento({
   const hasStats = stats.length > 0;
   const bigStat = size === "feature" || size === "wide";
   const isBlue = project.accent.toLowerCase() === "#0a1fff";
-  const keyLine = project.keywords.slice(0, 2).join(" · ");
+  const keyLine = project.keywords.slice(0, 3).join(" · ");
   const title =
     size === "feature"
       ? "text-3xl lg:text-[2.5rem]"
@@ -122,13 +124,13 @@ export function ProjectBento({
     <Reveal delay={(index % 3) * 0.06} y={32} scale={0.98} duration={0.5} className={`${SPAN[size]} min-w-0`}>
       <Link
         href={`/projects/${project.slug}/`}
-        style={{ "--accent": project.accent } as React.CSSProperties}
         className={`group flex h-full flex-col overflow-hidden rounded-lg bg-[#1A30FF] text-cream ${layout}`}
       >
-        <div
-          className={`relative overflow-hidden ${coverBox}`}
-          style={{ backgroundColor: isBlue ? "#F3EEE3" : project.accent }}
-        >
+        <div className={`relative p-2 ${coverBox}`}>
+          <div
+            className="relative h-full w-full overflow-hidden rounded-[4px]"
+            style={{ backgroundColor: isBlue ? "#F3EEE3" : project.accent }}
+          >
           <ParallaxCover>
             <Image
               src={project.cover}
@@ -138,45 +140,59 @@ export function ProjectBento({
               className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
             />
           </ParallaxCover>
+          </div>
         </div>
 
         <div
-          className={`flex min-w-0 flex-1 flex-col p-5 transition-colors duration-150 group-hover:bg-cream group-hover:text-blue group-focus-visible:bg-cream group-focus-visible:text-blue md:p-6 ${
+          className={`flex min-w-0 flex-1 flex-col p-5 transition-colors duration-150 group-hover:bg-blue-deep group-focus-visible:bg-blue-deep md:p-6 ${
             size === "feature" ? "lg:p-10" : ""
           } ${size === "full" ? "justify-center lg:px-8" : "justify-between"}`}
         >
           <div className="min-w-0">
-            <div className="flex items-center justify-between gap-3">
-              <span className="label opacity-70">{contextLabel(project, index + 1)}</span>
-              {rich && (
+            {rich && size !== "full" && (
+              <div className="flex items-center justify-between gap-3">
+                <span className="label opacity-70">{contextLabel(project, index + 1)}</span>
                 <Status tone="onBlue">{project.status}</Status>
-              )}
-            </div>
+              </div>
+            )}
             <h3
-              className={`mt-3 font-display font-medium leading-tight tracking-tight ${title}`}
+              className={`${rich && size !== "full" ? "mt-3" : ""} font-display font-semibold leading-tight tracking-tight ${title}`}
             >
               {project.title}
             </h3>
-            {keyLine && (
-              <p className="mt-3 text-[0.95rem] text-cream/85 group-hover:text-blue">{keyLine}</p>
-            )}
-            {size === "small" && hasStats && (
-              <div className="mt-5">
-                <Stat stat={stats[0]} big={false} />
-              </div>
+            {size === "full" && (
+              <p className="mt-3 max-w-[60ch] text-[0.95rem] text-cream/85">
+                {project.headline.replace(/\*\*/g, "")}
+              </p>
             )}
           </div>
-          {bigStat && hasStats && (
-            <div className="mt-6 flex flex-wrap gap-x-10 gap-y-5">
-              {stats.map((s) => (
-                <Stat key={s.value} stat={s} big />
-              ))}
+          {size !== "full" && hasStats && (
+            <div className="mt-5">
+              <Stat stat={stats[0]} big={bigStat} />
             </div>
           )}
-          <div className="mt-5 flex items-end justify-between gap-3">
-            {rich ? <Tags tone="onBlue" items={project.tags.slice(0, 3)} /> : <span />}
-            <Arrow />
-          </div>
+          {size !== "full" && (
+            <div className="mt-5 flex items-end justify-between gap-3">
+              {rich ? (
+                <span className="tile-meta min-w-0">
+                  <span className="tile-tags">
+                    <Tags tone="onBlue" items={project.tags.slice(0, 3)} />
+                  </span>
+                  <span className="tile-kw">
+                    <span className="label opacity-70">{keyLine}</span>
+                  </span>
+                </span>
+              ) : (
+                <span />
+              )}
+              <Arrow />
+            </div>
+          )}
+          {size === "full" && (
+            <div className="mt-4 flex justify-end">
+              <Arrow />
+            </div>
+          )}
         </div>
       </Link>
     </Reveal>

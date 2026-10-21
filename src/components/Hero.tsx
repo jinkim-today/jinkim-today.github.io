@@ -7,7 +7,6 @@ import {
   badgeText,
   contact,
   heroIdentity,
-  heroKeywords,
   heroSubline,
   heroTitle,
   typewriter,
@@ -89,14 +88,11 @@ export function Hero() {
         {heroSubline}
       </motion.p>
       <motion.div {...fade(1)} className="mt-10 flex flex-wrap items-center gap-3">
-        <Button href="#projects">See projects</Button>
+        <Button tone="accent" href="#projects">See projects</Button>
         <TextLink tone="onBlue" href={contact.resume} className="px-2 py-3">
           Download resume
         </TextLink>
       </motion.div>
-      <motion.p {...fade(2)} className="mt-6 max-w-3xl font-mono text-sm text-cream/80">
-        {heroKeywords}
-      </motion.p>
     </>
   );
 }

@@ -5,6 +5,7 @@
   --blue-deep: #0014b8;
   --cream: #f3eee3;
   --ink: #0b0b0f;
+  --accent: #ffd84d;
   --mute: #6b6b75;
 
   --bg: var(--cream);
@@ -43,6 +44,7 @@
   --color-blue-deep: var(--blue-deep);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
+  --color-accent: var(--accent);
   --color-mute: var(--mute);
   --color-bg: var(--bg);
   --color-fg: var(--fg);
@@ -107,9 +109,9 @@ body {
   line-height: 1;
 }
 .numeral {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -769,5 +771,33 @@ body:has(.portfolio) {
   .portfolio .pf-mat {
     aspect-ratio: auto;
     flex: 1;
+  }
+}
+
+/* Home: tile hover swap (tags -> keywords). Touch devices show keywords only. */
+.tile-meta {
+  display: grid;
+}
+.tile-meta > * {
+  grid-area: 1 / 1;
+  transition: opacity 200ms ease-out;
+}
+.tile-meta .tile-kw {
+  opacity: 0;
+}
+.group:hover .tile-meta .tile-tags,
+.group:focus-visible .tile-meta .tile-tags {
+  opacity: 0;
+}
+.group:hover .tile-meta .tile-kw,
+.group:focus-visible .tile-meta .tile-kw {
+  opacity: 1;
+}
+@media (hover: none) {
+  .tile-meta .tile-tags {
+    opacity: 0;
+  }
+  .tile-meta .tile-kw {
+    opacity: 1;
   }
 }

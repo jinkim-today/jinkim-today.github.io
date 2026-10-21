@@ -56,15 +56,17 @@ export default function Home() {
         <div className="wrap gutter pb-20 pt-32 md:pb-28 md:pt-40">
           <Hero />
         </div>
+      </section>
 
-        <div className="wrap gutter pb-16 md:pb-20">
+      <section className="bg-cream text-ink">
+        <div className="wrap gutter py-12 md:py-16">
           <dl className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-12">
             {proofStats.map((s, i) => (
               <Reveal key={s.label} y={24} delay={i * 0.1} className="min-w-0">
-                <dt className="numeral text-[clamp(2.75rem,6vw,5rem)]">
+                <dt className="numeral inline-block bg-accent px-2 text-ink text-[clamp(2.75rem,6vw,5rem)]">
                   <StatNumber value={s.value} />
                 </dt>
-                <dd className="label mt-3 max-w-[22ch] leading-relaxed text-cream/70">{s.label}</dd>
+                <dd className="label mt-3 max-w-[22ch] leading-relaxed text-ink/70">{s.label}</dd>
               </Reveal>
             ))}
           </dl>
@@ -72,7 +74,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className="bg-blue text-cream">
-        <div className="wrap gutter pb-20 pt-6 md:pb-28 md:pt-10">
+        <div className="wrap gutter pb-20 pt-10 md:pb-28 md:pt-14">
           <div className="flex items-end justify-between gap-4">
             <div>
               <Reveal y={24}>
