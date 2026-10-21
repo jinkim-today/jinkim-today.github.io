@@ -1,0 +1,70 @@
+---
+title: "Getting AI to stick in a small team"
+date: 2026-10-21
+summary: "How I got marketing, design and PM teams to actually use AI every day, one painful workflow at a time."
+summary_kr: "SDI에서 마케팅, 디자인, PM 팀에 AI를 정착시킨 과정을 정리한 글입니다. 도구만 던져주면 실패하므로, 한 팀의 가장 아픈 업무 하나를 골라 가장 작은 에이전트를 만들고 팀의 언어로 교육했습니다. 광고 제작은 2-3일에서 반나절로, 신입 온보딩은 2-3시간에서 30분으로 줄었습니다."
+tags: ["AI adoption", "Claude Code", "Team enablement"]
+---
+
+Most AI rollouts at small companies look the same. Someone buys a few subscriptions, posts a link in Slack, and two weeks later nobody is using them. I have watched this happen, and at SDI I got to try something different. I lead AI adoption across the marketing, design and PM teams. Here is what worked.
+
+## Why tools alone fail
+
+Handing a team a powerful tool does not change how they work. People have deadlines. Learning a new tool is a cost they pay today for a benefit they cannot see yet.
+
+The other problem is vocabulary. A marketer does not think in prompts and context windows. She thinks in campaigns, audiences and posting schedules. If the tool does not speak her language, it stays a toy.
+
+So I stopped asking "how do we get everyone to use AI?" and started asking "what is the one thing on this team that hurts the most?"
+
+## Pick one team and one painful workflow
+
+I picked a team, sat next to them, and watched them work. Then I asked what they dreaded.
+
+For marketing, the answer was the social ad pipeline. Research, images and video, copy, then posting. Every step was manual, and one ad took **2-3 days**.
+
+For the PM, the pain was turning a rough feature idea into a proper tech spec and GitHub issues. For the design team, it was spending time on web app design when they wanted to focus on ads.
+
+One team, one workflow, one clear before-and-after. That is enough to start.
+
+## Build the smallest agent
+
+I set up Claude Code with custom subagents and skills for each team. Each team got its own set, because each team has its own work.
+
+For marketing, I automated the ad pipeline end to end: research, image and video, copy and posting. For the PM, I built a tech spec pipeline. The PM describes a feature. The agent asks clarifying questions, pulls the latest code from the frontend and backend repos, creates feature branches, writes the spec from a template, and opens GitHub issues in the right repos. For design, I introduced AI design tools so developers could take over web design and designers could focus only on ads.
+
+I kept each agent small on purpose. A small agent that works on Monday beats a perfect one that ships in March.
+
+Then I took it to the whole company with Hermes, a multi-agent Slack platform. Agents fix bugs, post daily marketing and data reports, and give office staff access to the data they need. I also built a chatbot for newcomers, so questions that used to wait for a senior now get an answer right away.
+
+## Train in their words
+
+The build is only half the work. I ran training sessions for each team on how to use their agents and how to customize them.
+
+I avoided jargon. I showed the marketer her own ad, made by her own pipeline. I showed the PM his own feature, turned into a spec in minutes. When people see their own work in the demo, they listen.
+
+The goal was never "use my tool". It was "build your own automations". If a team can only use what I built, they will come back to me for every change. If they can extend it themselves, the habit sticks. So I teach people how to edit skills and add steps, not just how to press go.
+
+## Measure time saved
+
+I only trust numbers that the team agrees with. Here is what we saw.
+
+- Ad production went from **2-3 days** to **half a day**, which made daily ad output possible.
+- The newcomer chatbot cut the 1:1 onboarding session from **2-3 hours** to **30 minutes**. Follow-up questions now go to the chatbot.
+- Across the teams, people saved about **2-3 hours** per person daily.
+- With CI/CD and monitoring on GitHub Actions, Sentry and Slack, we catch about **2-3** production issues per week before users report them.
+
+Numbers also make the next team's conversation easier, because you can point at a real result.
+
+## Hand it off
+
+The last step is the one people skip. I write down how each agent works, who owns it, and how to change it. Then I step back.
+
+A good sign is when someone on the team fixes their own agent without telling me. That is when AI has stuck.
+
+## What I would do differently
+
+I would measure before I build. I have good after numbers, but some of the before numbers come from memory and team estimates. A simple time log for one week, before any agent exists, would make the results much harder to argue with.
+
+I would also name an owner on each team from day one, not at the end. A tool without a named owner slowly drifts.
+
+Finally, I would keep a short log of what each agent costs to run. Agents are cheap compared with people, but cheap is not free, and it is easier to set up tracking early than to reconstruct it later.

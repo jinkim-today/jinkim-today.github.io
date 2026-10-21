@@ -1,0 +1,73 @@
+---
+title: "Finding the real problem on a factory floor"
+date: 2026-10-21
+summary: "What I learned going on-site to a small plating factory, and why the real problem was not the one in the brief."
+summary_kr: "20인 도금공장에 상주하며 진짜 문제를 찾고 ERP를 구축한 경험을 정리한 글입니다. 전 직급을 인터뷰한 결과, 품질 분쟁의 원인은 구두 인수인계와 수기 기록, 추적 불가였습니다. 사무 인력은 3명에서 1명으로, 클라우드 비용은 90% 줄었고, 핵심 직원 3명을 교육해 제가 없어도 돌아가게 했습니다."
+tags: ["Forward-deployed", "ERP", "Manufacturing"]
+---
+
+When I started IntelliWorks, I thought the job was to build software for a factory. It turned out the job was to find out what the factory actually needed. Those are different jobs.
+
+## The brief vs the real problem
+
+The client is a plating factory with **20** people. The brief was simple: they wanted a system to manage their work. That could mean a hundred things.
+
+I could have started coding from that sentence. Instead, I went on-site. I did not know yet what to build, and I did not want to guess.
+
+What I found was that the people at the factory could not clearly say what was wrong. They felt the pain every day, but nobody had named it. Quality disputes kept coming up with the client's **40+** B2B customers. Everyone had a theory about why.
+
+## How I interviewed
+
+I talked to people at every level. The owner, the managers, the office staff, and the workers on the floor.
+
+I did not ask "what software do you want?" Nobody on a factory floor can answer that well. I asked about their day instead. What did you do first this morning? How do you know which order is next? What happens when a customer calls and asks where their parts are?
+
+I also watched. A lot of the real work is not in what people say. It is in the paper they carry, the board they write on, and the person they walk across the floor to find.
+
+After a while the pattern was clear. Three things sat under almost every dispute:
+
+- Handoffs between stations were verbal.
+- Records were kept on paper, including compliance logs.
+- There was no traceability. When a customer questioned a part, nobody could prove what had happened to it.
+
+The quality problem was really an information problem.
+
+## What I built first and why
+
+I built the ERP on React, Node.js and PostgreSQL. The first priority was LOT tracking. Every plating step, across multiple customer orders and production types, is now recorded and traceable. This went straight at the root cause. It replaced verbal handoffs and paper logs.
+
+Next came a customer portal. The client's **40+** customers can track their orders live, which cut messenger replies by **1+ hour** every day. It came from watching how much of the office day went to answering messages about order status.
+
+Then I built a chatbot into the ERP. Workers use it in their own language. Managers use it to ask for data in plain words, which matters when someone is not comfortable with computers.
+
+The last big piece was AI OCR. At **10** stations, workers used to write status on handwritten boards, and someone walked the floor to read them. Now workers photograph the reading. That saves about **1 hour** of floor walking every day.
+
+The result for the office was big. The team went from **3 people to 1 manager**, and cloud cost dropped by **90%** after I moved from Lambda to EC2.
+
+## What I deliberately did not build
+
+Some things I left out on purpose.
+
+I did not build a fancy dashboard first. Nobody asked for it, and it would not have fixed the handoff problem.
+
+I did not try to replace every paper form on day one. I started with the ones that caused disputes and moved on from there.
+
+I also kept the stack boring. React, Node.js and PostgreSQL are tools that many developers know. If the client ever needs to hire someone to maintain this, that person will exist.
+
+Some ideas, like visual defect detection, are still in progress. I would rather ship what works than demo what might.
+
+## Handing it off
+
+The goal was never to be needed forever. A system that only I can run is a risk for the client.
+
+I trained **3** key staff so the factory can run the system without me. I wrote down how it works and made sure the people who use it every day also know how to fix common problems.
+
+This work also led to a second client, a **50-person** factory, which I signed through my own outreach. I contacted them directly. The engagement is similar, and it is still being built.
+
+## What I would do differently
+
+I would write down the baseline numbers in the first week. I know the office went from 3 people to 1, but I did not time how long each task took before I started. Better before numbers would make the story stronger.
+
+I would also bring a worker into the design earlier, not just the interviews. The people who use a tool every day notice details that I cannot see from a desk.
+
+And I would start training on the first week, not at the end. People learn faster when the system grows in front of them.
