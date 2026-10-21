@@ -13,6 +13,10 @@ stats:
     label: "office staff needed after the ERP"
   - value: "-90%"
     label: "cloud cost after moving Lambda to EC2"
+period: "Jun 2025 – present"
+team: "Founder, sole engineer; trained 3 client staff"
+contribution: "100%"
+links: []
 tags: ["React", "Node.js", "PostgreSQL"]
 order: 5
 featured: true
@@ -43,6 +47,10 @@ React app → Node.js API → PostgreSQL → S3 photos → AI OCR → production
 - **1+ hour** of messenger replies saved daily, plus **1 hour** of floor walking
 - Cloud cost: **-90%** after moving from Lambda to EC2
 - A second factory with **50** employees signed through my own outreach
+
+## Troubleshooting
+
+Problem: the first version ran on AWS Lambda, but an always-on ERP made the bill too high. Cause: Lambda pricing suits occasional bursts, not a system the whole factory uses all day. Fix: I moved the app to EC2 and S3, which cut infrastructure cost by **90%**. A second problem was that workers kept writing on boards instead of typing. I let them keep the habit and had them photograph the boards, then read the photos with AI OCR. Result: **10** stations are covered and about **1 hour** of floor walking is saved every day.
 
 ## Next
 

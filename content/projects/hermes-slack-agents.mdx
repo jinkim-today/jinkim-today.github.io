@@ -13,6 +13,10 @@ stats:
     label: "saved per person, every day"
   - value: "30 min"
     label: "new-hire onboarding, down from 2-3 hours"
+period: "2026 (ongoing)"
+team: "Lead and sole builder; rolled out to 3 internal teams"
+contribution: "100%"
+links: []
 tags: ["Slack", "Claude Code", "Agents"]
 order: 4
 featured: false
@@ -43,6 +47,10 @@ Slack → agent router → task agents (bug fix, report, Q&A) → repos, data, S
 - Ad production: **2-3 days to half a day**
 - 1:1 onboarding: **2-3 hours to 30 minutes**
 - Production issues caught: **2-3 per week** before users reported them
+
+## Troubleshooting
+
+Problem: production errors were going unnoticed until users complained. Cause: nothing connected the deploys, the error tracker, and the channels the team reads. Fix: I wired GitHub Actions, Sentry, and Slack together so each issue became a real-time alert. Result: **2-3 issues per week** are now caught before users report them.
 
 ## Next
 

@@ -22,6 +22,10 @@ export type Project = {
   featured: boolean;
   summary_kr: string;
   gallery?: string[];
+  period: string;
+  team: string;
+  contribution: string;
+  links: { label: string; url: string }[];
   body: string;
 };
 
@@ -56,6 +60,10 @@ export function getProjects(): Project[] {
         featured: Boolean(data.featured),
         summary_kr: data.summary_kr ?? "",
         gallery: (data.gallery as string[] | undefined) ?? [],
+        period: data.period ?? String(data.year),
+        team: data.team ?? data.role,
+        contribution: data.contribution ?? "",
+        links: (data.links as { label: string; url: string }[] | undefined) ?? [],
         body: content,
       } satisfies Project;
     })

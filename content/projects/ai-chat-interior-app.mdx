@@ -13,6 +13,10 @@ stats:
     label: "products in the recommendation catalog"
   - value: "31"
     label: "design concepts mapped in the knowledge graph"
+period: "2026"
+team: "Solo build; product team of 3 gave requirements"
+contribution: "100% of the chat rebuild"
+links: []
 tags: ["LangGraph", "Neo4j", "GraphRAG"]
 order: 2
 featured: true
@@ -42,6 +46,10 @@ Flask API → LangGraph agent → Claude + Gemini → Neo4j knowledge graph (Gra
 - Chat became the main way users use the product, and the old button interface was retired
 - Knowledge graph of **40,000+** nodes covering **31** design concepts
 - Recommendations drawn from a catalog of **40,000+** products
+
+## Troubleshooting
+
+Problem: the recommendations ignored the user's context and taste. Cause: a plain product search had no way to connect a design concept to materials, colors, and product traits. Fix: I built a knowledge graph of **40,000+** nodes on Neo4j (**31** concepts linked to materials, colors, and products) and generated prompts with GraphRAG. Result: recommendations are now built from the user's own concept and context.
 
 ## Next
 

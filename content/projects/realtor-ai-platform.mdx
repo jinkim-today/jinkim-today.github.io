@@ -13,6 +13,10 @@ stats:
     label: "investor inquiries at one conference, up from 2"
   - value: "1 wk"
     label: "from first commit to live MVP"
+period: "2026 (MVP in 1 week, ongoing)"
+team: "Solo (design, frontend, backend, AI)"
+contribution: "100%"
+links: []
 tags: ["Next.js", "FastAPI", "RAG"]
 order: 1
 featured: true
@@ -42,6 +46,10 @@ Next.js app → FastAPI → PostgreSQL (pgvector) → Gemini embeddings → Lang
 - MVP live in **1 week**, built solo
 - **11** investor inquiries at one startup conference, up from **2** for the consumer product
 - One of **2** B2B AI apps I build and maintain
+
+## Troubleshooting
+
+Problem: realtors uploaded their own PDFs and expected the assistant to answer from them. Cause: a model cannot read long documents reliably in one prompt, and each user's files must stay private. Fix: I split each PDF into chunks, turned them into vectors, and stored them in Supabase pgvector as a per-user knowledge base. Result: the assistant answers from each realtor's own documents.
 
 ## Next
 
