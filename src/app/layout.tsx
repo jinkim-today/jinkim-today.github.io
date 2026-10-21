@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 import { siteDescription, siteTitle, siteUrl } from "@/content/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
@@ -41,9 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Script id="theme-init" strategy="beforeInteractive">{themeScript}</Script>
       </head>
       <body className="flex min-h-screen flex-col">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
