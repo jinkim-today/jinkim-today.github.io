@@ -5,14 +5,16 @@ const out = "public/portfolio.pdf";
 
 const browser = await chromium.launch({ channel: "chrome" });
 try {
-  const page = await browser.newPage();
+  const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   await page.goto(url, { waitUntil: "networkidle" });
   await page.emulateMedia({ media: "print" });
   await page.pdf({
     path: out,
-    format: "A4",
+    width: "1280px",
+    height: "720px",
     printBackground: true,
-    margin: { top: "16mm", right: "16mm", bottom: "16mm", left: "16mm" },
+    margin: { top: "0", right: "0", bottom: "0", left: "0" },
+    preferCSSPageSize: true,
   });
   console.log(`wrote ${out} from ${url}`);
 } finally {
