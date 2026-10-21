@@ -7,8 +7,8 @@ export const siteDescription =
 
 export const badgeText = "Open to FDE / AI Engineer roles · Seoul & Vancouver";
 
-export const heroIdentity =
-  "Jin Kim · Fullstack & AI engineer · Seongnam, KR -> Vancouver, CA (2027)";
+export const heroHeadline = "Software and AI, built where the work happens.";
+export const heroIdentity = "Jin Kim · Fullstack & AI engineer · Seongnam → Vancouver 2027";
 
 export const heroTitle =
   "I go on-site, find the real problem, and ship the software that fixes it.";
@@ -70,6 +70,9 @@ export const aboutSummary = [
   "I work best close to the people who use the software.",
 ];
 
+/** dark = black marks (inverted in dark mode), white = white marks (blackened in light mode), color = leave as is. */
+export type LogoTone = "dark" | "white" | "color";
+
 export const about = {
   metaDescription:
     "About Jin Kim: forward-deployed and AI engineer in Seongnam and Vancouver. Founder, consultant, and sole engineer who builds software next to the people who use it.",
@@ -79,10 +82,24 @@ export const about = {
     "I have done this as a founder, a consultant, and the sole engineer on small teams. I built and sold a photography business, built a factory system that cut an office team from 3 people to 1 manager, and now lead AI work for client companies at SDI.",
     "I work best close to the people who use the software. I go on-site, build the smallest working version fast, and train the team to run it without me.",
   ],
+  education: [
+    {
+      org: "Simon Fraser University",
+      logo: "/logos/sfu.png",
+      logoTone: "color" as LogoTone,
+      short: "Computer science degree, Burnaby, BC",
+      role: "Bachelor of Computer Science",
+      when: "Sep 2020 - Oct 2025",
+      place: "Burnaby, BC",
+      line: "Computer science degree in Burnaby, BC.",
+    },
+  ],
   timelineTitle: "Where I have worked",
   timeline: [
     {
       org: "SDI Creative Technologies",
+      logo: "/logos/sdi.svg",
+      logoTone: "dark" as LogoTone,
       short: "Built 2 AI apps, led AI for 3 client companies",
       role: "AI & Forward Deployed Engineer",
       when: "Jan 2026 - Present",
@@ -90,6 +107,8 @@ export const about = {
     },
     {
       org: "IntelliWorks",
+      logo: "/logos/intelliworks.svg",
+      logoTone: "dark" as LogoTone,
       short: "Signed 2 factories; office team cut 3 to 1",
       role: "Founder",
       when: "Jun 2025 - Present",
@@ -97,6 +116,8 @@ export const about = {
     },
     {
       org: "Dialpad",
+      logo: "/logos/dialpad.svg",
+      logoTone: "dark" as LogoTone,
       short: "C++ call-testing tool caught a critical bug early",
       role: "Software Engineer, Co-op",
       when: "Jan 2025 - Jan 2026",
@@ -104,6 +125,8 @@ export const about = {
     },
     {
       org: "Photobyme (acquired)",
+      logo: "/logos/photobyme.png",
+      logoTone: "white" as LogoTone,
       short: "300+ events, $8-10K monthly revenue, then sold",
       role: "Founder",
       when: "Apr 2022 - Jan 2026",
@@ -111,6 +134,8 @@ export const about = {
     },
     {
       org: "Computrol Systems",
+      logo: "/logos/computrol.svg",
+      logoTone: "dark" as LogoTone,
       short: "Firmware and web app, setup time cut 80%",
       role: "Junior Developer, Co-op",
       when: "Jan 2024 - Dec 2024",
@@ -118,17 +143,12 @@ export const about = {
     },
     {
       org: "Intersystem Controls",
+      logo: "/logos/intersystem.png",
+      logoTone: "color" as LogoTone,
       short: "Automated license keys; stock tracking time cut 75%",
       role: "Full-stack Developer, Co-op",
       when: "Jan 2023 - Sep 2023",
       line: "Automated license key creation end to end and built a stock tracking system that cut manual tracking time 75%.",
-    },
-    {
-      org: "Simon Fraser University",
-      short: "Computer science degree, Burnaby, BC",
-      role: "Bachelor of Computer Science",
-      when: "Sep 2020 - Oct 2025",
-      line: "Computer science degree in Burnaby, BC.",
     },
   ],
   nowTitle: "Now",
@@ -153,15 +173,4 @@ export const about = {
   emailLabel: "Email",
   linkedinLabel: "LinkedIn",
   githubLabel: "GitHub",
-};
-
-// Hero typewriter timing.
-export const typewriter = {
-  msPerChar: 35,
-  /** Subline and CTA appear after typing ends or this long, whichever is later. */
-  minRevealMs: 1200,
-  caretBlinkMs: 1000,
-  /** Block caret size in em; it blinks and stays after typing finishes. */
-  caretWidthEm: 0.55,
-  caretHeightEm: 1,
 };

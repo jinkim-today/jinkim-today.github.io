@@ -97,9 +97,8 @@ export default function PortfolioPage() {
   const projects = getProjects();
   const host = siteUrl.replace(/^https?:\/\//, "");
   const timeline = [...about.timeline]
-    .filter((t) => !t.org.startsWith("Simon Fraser"))
     .sort((a, b) => dateKey(a.when) - dateKey(b.when));
-  const sfu = about.timeline.find((t) => t.org.startsWith("Simon Fraser"));
+  const sfu = about.education[0];
   if (sfu) timeline.push(sfu);
 
   const [lang, ai, web, cloud] = about.skills;

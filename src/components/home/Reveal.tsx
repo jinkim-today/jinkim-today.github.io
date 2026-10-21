@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import styles from "./bold.module.css";
 
 export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +23,7 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
   }, []);
 
   return (
-    <div ref={ref} className={`${styles.reveal} ${shown ? styles.in : ""} ${className}`}>
+    <div ref={ref} className={`reveal ${shown ? "reveal-in" : ""} ${className}`}>
       {children}
     </div>
   );
